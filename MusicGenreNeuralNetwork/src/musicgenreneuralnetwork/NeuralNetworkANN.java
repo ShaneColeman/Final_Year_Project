@@ -5,10 +5,15 @@
  */
 package musicgenreneuralnetwork;
 
+import org.neuroph.util.TransferFunctionType;
+
 /**
  *
  * @author Windows
  */
-public class NeuralNetworkANN {
+public class NeuralNetworkANN 
+{
+    public void multiLayerPerceptron(TransferFunctionType type, int inputs, int hidden, int outputs){};
     
+    public void saveNeuralNetwork(String name){};
 }
