@@ -11,7 +11,7 @@ import org.neuroph.util.TransferFunctionType;
  *
  * @author Windows
  */
-public class NeuralNetworkANN 
+public abstract class NeuralNetworkANN 
 {
     public void multiLayerPerceptron(TransferFunctionType type, int inputs, int hidden, int outputs){};
     
