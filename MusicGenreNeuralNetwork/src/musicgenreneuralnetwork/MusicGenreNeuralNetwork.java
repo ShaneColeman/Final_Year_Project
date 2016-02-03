@@ -63,13 +63,13 @@ public class MusicGenreNeuralNetwork {
         MultiLayerPerceptronANN mlpANN8 = new MultiLayerPerceptronANN();
         mlpANN8.multiLayerPerceptron(TransferFunctionType.STEP, 5, 3, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Step, 5, 3, 4)");
-        mlpANN8.saveNeuralNetwork("mlp8_sin_5_3_4.nnet");
+        mlpANN8.saveNeuralNetwork("mlp8_step_5_3_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Step, 5, 3, 4) saved");
         
         MultiLayerPerceptronANN mlpANN9 = new MultiLayerPerceptronANN();
         mlpANN9.multiLayerPerceptron(TransferFunctionType.TANH, 4, 2, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Tnah, 4, 2, 4)");
-        mlpANN9.saveNeuralNetwork("mlp9_sin_4_2_4.nnet");
+        mlpANN9.saveNeuralNetwork("mlp9_tnah_4_2_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Tnah, 4, 2, 4) saved");
         
         MultiLayerPerceptronANN mlpANN10 = new MultiLayerPerceptronANN();
