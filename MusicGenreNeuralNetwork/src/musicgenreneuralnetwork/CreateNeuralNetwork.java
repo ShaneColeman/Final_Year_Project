@@ -11,5 +11,8 @@ package musicgenreneuralnetwork;
  */
 public class CreateNeuralNetwork 
 {
-    
+    public CreateNeuralNetwork()
+    {
+        
+    }
 }
