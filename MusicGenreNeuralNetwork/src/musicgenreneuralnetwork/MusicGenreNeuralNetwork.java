@@ -18,6 +18,7 @@ public class MusicGenreNeuralNetwork {
      */
     public static void main(String[] args) 
     {
+        /*
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
@@ -77,6 +78,7 @@ public class MusicGenreNeuralNetwork {
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Trapezoid, 7, 4, 4)");
         mlpANN10.saveNeuralNetwork("mlp10_trap_7_4_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Trapezoid, 7, 4, 4) saved");
+        */
     }
     
 }
