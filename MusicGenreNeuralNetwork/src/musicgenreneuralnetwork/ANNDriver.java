@@ -11,7 +11,7 @@ import org.neuroph.util.TransferFunctionType;
  *
  * @author Windows
  */
-public class MusicGenreNeuralNetwork {
+public class ANNDriver {
 
     /**
      * @param args the command line arguments
