@@ -23,4 +23,9 @@ public class DataSetTrain
         train.addRow(new DataSetRow(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0}, 
                 new double[]{0, 0, 1, 0}));
     }
+    
+    public DataSet getDataSet()
+    {
+        return train;
+    }
 }
