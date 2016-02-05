@@ -21,6 +21,7 @@ public class CreateNeuralNetwork
         mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
+        /*
         MultiLayerPerceptronANN mlpANN2 = new MultiLayerPerceptronANN();
         mlpANN2.multiLayerPerceptron(TransferFunctionType.GAUSSIAN, 7, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Gaussian, 7, 6, 4)");
@@ -74,5 +75,6 @@ public class CreateNeuralNetwork
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Trapezoid, 7, 4, 4)");
         mlpANN10.saveNeuralNetwork("mlp10_trap_7_4_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Trapezoid, 7, 4, 4) saved");
+        */
     }
 }
