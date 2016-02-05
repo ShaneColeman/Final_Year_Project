@@ -34,4 +34,9 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     {
         multiLayer.learn(dataSet);
     }
+    
+    public MultiLayerPerceptron getMultiLayerPerceptron()
+    {
+        return multiLayer;
+    }
 }

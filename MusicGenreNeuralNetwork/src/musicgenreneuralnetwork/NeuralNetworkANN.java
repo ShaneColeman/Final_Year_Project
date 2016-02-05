@@ -6,6 +6,7 @@
 package musicgenreneuralnetwork;
 
 import org.neuroph.core.data.DataSet;
+import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.util.TransferFunctionType;
 
 /**
