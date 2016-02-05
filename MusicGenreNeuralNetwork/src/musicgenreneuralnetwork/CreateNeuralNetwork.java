@@ -5,6 +5,10 @@
  */
 package musicgenreneuralnetwork;
 
+import java.util.Arrays;
+import org.neuroph.core.NeuralNetwork;
+import org.neuroph.core.data.DataSet;
+import org.neuroph.core.data.DataSetRow;
 import org.neuroph.util.TransferFunctionType;
 
 /**
@@ -85,5 +89,17 @@ public class CreateNeuralNetwork
         mlpANN10.saveNeuralNetwork("mlp10_trap_7_4_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Trapezoid, 7, 4, 4) saved");
         */
+    }
+    
+    public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
+    {
+        for(DataSetRow dataRow:testDataSet.getRows())
+        {
+            nnet.setInput(dataRow.getInput());
+            nnet.calculate();
+            double[] networkOutput = nnet.getOutput();
+            System.out.println("Input: " + Arrays.toString(dataRow.getInput()));
+            System.out.println("Output: " + Arrays.toString(networkOutput));
+        }
     }
 }
