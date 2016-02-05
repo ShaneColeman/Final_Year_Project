@@ -15,9 +15,18 @@ public class CreateNeuralNetwork
 {
     public CreateNeuralNetwork()
     {
+        //Training Data Set
+        DataSetTrain dataTrain = new DataSetTrain();
+        dataTrain.trainingDataSet_8_4();
+        
+        //Multi-Layer Perceptron Artificial Neural Network 
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
+        
+        //Learning the Data Set
+        mlpANN1.learnDataSet(dataTrain.getDataSet());
+        
         mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
