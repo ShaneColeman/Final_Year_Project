@@ -5,6 +5,7 @@
  */
 package musicgenreneuralnetwork;
 
+import org.neuroph.core.data.DataSet;
 import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.util.TransferFunctionType;
 
@@ -26,5 +27,11 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     public void saveNeuralNetwork(String name)
     {
         multiLayer.save(name);
+    }
+    
+    @Override
+    public void learnDataSet(DataSet dataSet)
+    {
+        multiLayer.learn(dataSet);
     }
 }
