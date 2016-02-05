@@ -5,10 +5,18 @@
  */
 package musicgenreneuralnetwork;
 
+import org.neuroph.core.data.DataSet;
+
 /**
  *
  * @author Windows
  */
-public class DataSetTrain {
+public class DataSetTrain 
+{
+    DataSet train;
     
+    public void trainingDataSet()
+    {
+        
+    }
 }
