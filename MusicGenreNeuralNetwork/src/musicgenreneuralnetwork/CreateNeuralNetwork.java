@@ -47,7 +47,7 @@ public class CreateNeuralNetwork
         System.out.println("\nTesting Loaded Neural Network");
         testNeuralNetwork(loadMLP,dataTrain.getDataSet());
         
-        
+        System.out.println("\nInput / Output Values (Desired): " + dataTrain.getDataSet().getRows());
         
         /*
         MultiLayerPerceptronANN mlpANN2 = new MultiLayerPerceptronANN();
