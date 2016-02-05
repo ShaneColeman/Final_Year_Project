@@ -5,6 +5,7 @@
  */
 package musicgenreneuralnetwork;
 
+import org.neuroph.core.data.DataSet;
 import org.neuroph.util.TransferFunctionType;
 
 /**
@@ -16,4 +17,6 @@ public abstract class NeuralNetworkANN
     public void multiLayerPerceptron(TransferFunctionType type, int inputs, int hidden, int outputs){};
     
     public void saveNeuralNetwork(String name){};
+    
+    public void learnDataSet(DataSet dataSet){};
 }
