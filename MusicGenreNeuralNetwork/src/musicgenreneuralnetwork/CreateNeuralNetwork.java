@@ -6,6 +6,7 @@
 package musicgenreneuralnetwork;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
@@ -32,11 +33,22 @@ public class CreateNeuralNetwork
         mlpANN1.learnDataSet(dataTrain.getDataSet());
         
         //Test Neural Network
+        System.out.println("\nTesting Trained Neural Network");
         testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getDataSet());
         
         //Save Neural Network
-        mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+        //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+        //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+        
+        //Load Neural Network
+        NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+        
+        //Test Loaded Neural Network
+        System.out.println("\nTesting Loaded Neural Network");
+        testNeuralNetwork(loadMLP,dataTrain.getDataSet());
+        
+        
+        
         /*
         MultiLayerPerceptronANN mlpANN2 = new MultiLayerPerceptronANN();
         mlpANN2.multiLayerPerceptron(TransferFunctionType.GAUSSIAN, 7, 6, 4);
@@ -96,8 +108,9 @@ public class CreateNeuralNetwork
     
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
     {
-        for(DataSetRow dataRow:testDataSet.getRows())
+        for (Iterator<DataSetRow> it = testDataSet.getRows().iterator(); it.hasNext();) 
         {
+            DataSetRow dataRow = it.next();
             nnet.setInput(dataRow.getInput());
             nnet.calculate();
             double[] networkOutput = nnet.getOutput();
