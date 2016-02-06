@@ -32,4 +32,9 @@ public class DataSetTest
         test.addRow(new DataSetRow(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
                 new double[]{1,	0, 0, 0}));
     }
+    
+    public DataSet getDataSet()
+    {
+        return test;
+    }
 }
