@@ -14,7 +14,7 @@ import org.neuroph.core.data.DataSetRow;
  */
 public class DataSetTrain 
 {
-    DataSet train;
+    private DataSet train;
     
     public void trainingDataSet_8_4()
     {
