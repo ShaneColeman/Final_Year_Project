@@ -15,7 +15,7 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class MultiLayerPerceptronANN extends NeuralNetworkANN
 {
-    MultiLayerPerceptron multiLayer;
+    private MultiLayerPerceptron multiLayer;
     
     @Override
     public void multiLayerPerceptron(TransferFunctionType type, int inputs, int hidden, int outputs)
