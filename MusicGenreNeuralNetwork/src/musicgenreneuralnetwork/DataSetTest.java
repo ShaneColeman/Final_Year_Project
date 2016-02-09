@@ -14,7 +14,7 @@ import org.neuroph.core.data.DataSetRow;
  */
 public class DataSetTest 
 {
-    DataSet test;
+    private DataSet test;
     
     public void testingDataSet_8_4()
     {
