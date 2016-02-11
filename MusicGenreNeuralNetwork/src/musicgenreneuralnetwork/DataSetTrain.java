@@ -15,7 +15,10 @@ import org.neuroph.core.data.DataSetRow;
 public class DataSetTrain 
 {
     private DataSet train;
+    private int inputs;
+    private int outputs; 
     
+    //Proper - Do Not Delete
     public void trainingDataSet_8_4()
     {
         train = new DataSet(8,4);
