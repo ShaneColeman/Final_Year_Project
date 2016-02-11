@@ -32,12 +32,12 @@ public class CreateNeuralNetwork
         //Learning the Data Set
         mlpANN1.learnDataSet(dataTrain.getDataSet());
         
-        //Test Neural Network
-        System.out.println("\nTesting Trained Neural Network");
-        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getDataSet());
-        
         //Input / Output (Desired) Values - Train Data Set
         System.out.println("\nInput / Output Values (Desired): " + dataTrain.getDataSet().getRows());
+        
+        //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+        System.out.println("\nTesting Trained Neural Network");
+        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getDataSet());
         
         //Save Neural Network
         mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -50,12 +50,12 @@ public class CreateNeuralNetwork
         //Load Neural Network
         NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
         
-        //Test Loaded Neural Network
-        System.out.println("\nTesting Loaded Neural Network");
-         testNeuralNetwork(loadMLP,dataTest.getDataSet());
-        
         //Input / Output (Desired) Values - Test Data Set
         System.out.println("\nInput / Output Values (Desired): " + dataTest.getDataSet().getRows());
+        
+        //Test Loaded Neural Network
+        System.out.println("\nTesting Loaded Neural Network");
+        testNeuralNetwork(loadMLP,dataTest.getDataSet());
         
         
         
