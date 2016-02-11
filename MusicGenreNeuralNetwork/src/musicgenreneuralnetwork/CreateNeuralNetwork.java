@@ -52,7 +52,7 @@ public class CreateNeuralNetwork
         
         //Test Loaded Neural Network
         System.out.println("\nTesting Loaded Neural Network");
-        testNeuralNetwork(loadMLP,dataTest.getDataSet());
+         testNeuralNetwork(loadMLP,dataTest.getDataSet());
         
         //Input / Output (Desired) Values - Test Data Set
         System.out.println("\nInput / Output Values (Desired): " + dataTest.getDataSet().getRows());
