@@ -42,6 +42,11 @@ public class DataSetTrain
         this.inputs = inputs;
     }
     
+    public void setOutputs(int outputs)
+    {
+        this.outputs = outputs;
+    }
+    
     public DataSet getDataSet()
     {
         return train;
