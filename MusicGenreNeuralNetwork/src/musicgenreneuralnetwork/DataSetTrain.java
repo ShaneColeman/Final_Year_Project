@@ -52,6 +52,11 @@ public class DataSetTrain
         return inputs;
     }
     
+    public int getOutputs()
+    {
+        return outputs;
+    }
+    
     public DataSet getDataSet()
     {
         return train;
