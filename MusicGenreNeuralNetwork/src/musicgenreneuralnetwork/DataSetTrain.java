@@ -18,6 +18,15 @@ public class DataSetTrain
     private int inputs;
     private int outputs; 
     
+    
+    
+    public DataSetTrain()
+    {
+        setInputs(0);
+        setOutputs(0);
+        train = new DataSet(getInputs(),getOutputs());
+    }
+
     //Proper - Do Not Delete
     public void trainingDataSet_8_4()
     {
