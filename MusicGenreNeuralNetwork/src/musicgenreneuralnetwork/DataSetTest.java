@@ -15,6 +15,8 @@ import org.neuroph.core.data.DataSetRow;
 public class DataSetTest 
 {
     private DataSet test;
+    private int inputs;
+    private int outputs;
     
     public void testingDataSet_8_4()
     {
@@ -31,6 +33,26 @@ public class DataSetTest
         
         test.addRow(new DataSetRow(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
                 new double[]{1,	0, 0, 0}));
+    }
+    
+    public void setInputs(int inputs)
+    {
+        this.inputs = inputs;
+    }
+    
+    public void setOutputs(int outputs)
+    {
+        this.outputs = outputs;
+    }
+    
+    public int getInputs()
+    {
+        return inputs;
+    }
+    
+    public int getOutputs()
+    {
+        return outputs;
     }
     
     public DataSet getDataSet()
