@@ -6,6 +6,7 @@
 package musicgenreneuralnetwork;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
@@ -64,7 +65,10 @@ public class CreateNeuralNetwork
         System.out.println("\nTesting Loaded Neural Network");
         testNeuralNetwork(loadMLP,dataTest.getDataSet());
         
-        
+        //Date and Time
+        Date date = new Date();
+        System.out.println("Date and Time: " + date.toString());
+
         
         //Multiple Multi-Layer Perceptron Artificial Neural Networks
         /*
