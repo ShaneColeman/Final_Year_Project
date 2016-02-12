@@ -36,7 +36,7 @@ public class DataSetTrain
     }
 
     //Proper - Do Not Delete
-    public void trainingDataSet_8_4()
+    public void addDataSetTrainRows()
     {
         //train = new DataSet(8,4);
         

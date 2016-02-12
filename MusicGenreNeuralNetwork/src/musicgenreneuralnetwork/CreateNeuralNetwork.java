@@ -22,7 +22,7 @@ public class CreateNeuralNetwork
     {
         //Training Data Set
         DataSetTrain dataTrain = new DataSetTrain(8,4);
-        dataTrain.trainingDataSet_8_4();
+        dataTrain.addDataSetTrainRows();
         
         //Multi-Layer Perceptron Artificial Neural Network 
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
