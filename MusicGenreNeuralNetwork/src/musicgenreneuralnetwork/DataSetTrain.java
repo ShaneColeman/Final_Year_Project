@@ -26,6 +26,14 @@ public class DataSetTrain
         setOutputs(0);
         train = new DataSet(getInputs(),getOutputs());
     }
+    
+    public DataSetTrain(int inputs, int outputs)
+    {
+        setInputs(inputs);
+        setOutputs(outputs);
+        
+        train = new DataSet(getInputs(),getOutputs());
+    }
 
     //Proper - Do Not Delete
     public void trainingDataSet_8_4()
