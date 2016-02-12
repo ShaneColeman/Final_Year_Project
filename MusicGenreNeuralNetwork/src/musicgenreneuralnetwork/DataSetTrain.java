@@ -18,12 +18,11 @@ public class DataSetTrain
     private int inputs;
     private int outputs; 
     
-    
-    
     public DataSetTrain()
     {
         setInputs(0);
         setOutputs(0);
+        
         train = new DataSet(getInputs(),getOutputs());
     }
     
@@ -35,26 +34,10 @@ public class DataSetTrain
         train = new DataSet(getInputs(),getOutputs());
     }
 
-    //Proper - Do Not Delete
-    public void addDataSetTrainRows(double[] inputs, double[] outputs)
+    
+    public void addTrainingDataSetRows(double[] inputs, double[] outputs)
     {
         train.addRow(new DataSetRow(inputs,outputs));
-
-        //train = new DataSet(8,4);
-        
-        /*
-        train.addRow(new DataSetRow(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0}, 
-                new double[]{0, 0, 1, 0}));
-        
-        train.addRow(new DataSetRow(new double[]{0.237854251, 0.733333333, 0.6, 0, 1, 0.025, 0.818181818, 0.428571429}, 
-                new double[]{0, 0, 0, 1}));
-        
-        train.addRow(new DataSetRow(new double[]{0.208502024, 0.466666667, 0.3, 0, 1, 0.3, 1, 0}, 
-                new double[]{0, 0, 1, 0}));
-        
-        train.addRow(new DataSetRow(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0}, 
-                new double[]{0, 0, 1, 0}));
-        */
     }
     
     public void setInputs(int inputs)
