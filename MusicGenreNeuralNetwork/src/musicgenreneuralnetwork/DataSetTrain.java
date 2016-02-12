@@ -38,7 +38,7 @@ public class DataSetTrain
     //Proper - Do Not Delete
     public void trainingDataSet_8_4()
     {
-        train = new DataSet(8,4);
+        //train = new DataSet(8,4);
         
         train.addRow(new DataSetRow(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0}, 
                 new double[]{0, 0, 1, 0}));
