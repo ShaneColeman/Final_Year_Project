@@ -18,6 +18,14 @@ public class DataSetTest
     private int inputs;
     private int outputs;
     
+    public DataSetTest()
+    {
+        setInputs(0);
+        setOutputs(0);
+        
+        test = new DataSet(getInputs(),getOutputs());
+    }
+    
     public void testingDataSet_8_4()
     {
         test = new DataSet(8,4);
