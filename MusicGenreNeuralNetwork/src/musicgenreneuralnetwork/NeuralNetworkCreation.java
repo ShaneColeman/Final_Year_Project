@@ -17,9 +17,9 @@ import org.neuroph.util.TransferFunctionType;
  *
  * @author Windows
  */
-public class CreateNeuralNetwork 
+public class NeuralNetworkCreation 
 {
-    public CreateNeuralNetwork()
+    public NeuralNetworkCreation()
     {
         //Training Data Set
         DataSetTrain dataTrain = new DataSetTrain(8,4);

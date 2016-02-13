@@ -18,7 +18,7 @@ public class ANNDriver {
      */
     public static void main(String[] args) 
     {
-        CreateNeuralNetwork neuralNetwork = new CreateNeuralNetwork();
+        NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
     }
     
 }
