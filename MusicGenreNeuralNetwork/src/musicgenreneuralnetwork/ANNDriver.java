@@ -5,8 +5,6 @@
  */
 package musicgenreneuralnetwork;
 
-import org.neuroph.util.TransferFunctionType;
-
 /**
  *
  * @author Windows
