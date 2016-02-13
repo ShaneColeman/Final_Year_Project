@@ -26,6 +26,14 @@ public class DataSetTest
         test = new DataSet(getInputs(),getOutputs());
     }
     
+    public DataSetTest(int inputs, int outputs)
+    {
+        setInputs(inputs);
+        setOutputs(outputs);
+        
+        test = new DataSet(getInputs(),getOutputs());
+    }
+    
     public void testingDataSet_8_4()
     {
         test = new DataSet(8,4);
