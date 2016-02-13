@@ -19,19 +19,10 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class NeuralNetworkCreation 
 {
+    private DataSetTrain dataTrain;
+    
     public void multiLayerPerceptronCreation()
     {
-        //Training Data Set
-        DataSetTrain dataTrain = new DataSetTrain(8,4);
-        dataTrain.addTrainingDataSetRows(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0},
-                new double[]{0, 0, 1, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.237854251, 0.733333333, 0.6, 0, 1, 0.025, 0.818181818, 0.428571429},
-                new double[]{0, 0, 0, 1});
-        dataTrain.addTrainingDataSetRows(new double[]{0.208502024, 0.466666667, 0.3, 0, 1, 0.3, 1, 0},
-                new double[]{0, 0, 1, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
-                new double[]{0, 0, 1, 0});
-        
         //Multi-Layer Perceptron Artificial Neural Network 
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
@@ -133,6 +124,20 @@ public class NeuralNetworkCreation
         mlpANN10.saveNeuralNetwork("mlp10_trap_7_4_4.nnet");
         System.out.println("Multi-Layer Perceptron A.N.N. (Trapezoid, 7, 4, 4) saved");
         */
+    }
+    
+    public void dataSetTrainingCreation()
+    {
+        //Training Data Set
+        dataTrain = new DataSetTrain(8,4);
+        dataTrain.addTrainingDataSetRows(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0},
+                new double[]{0, 0, 1, 0});
+        dataTrain.addTrainingDataSetRows(new double[]{0.237854251, 0.733333333, 0.6, 0, 1, 0.025, 0.818181818, 0.428571429},
+                new double[]{0, 0, 0, 1});
+        dataTrain.addTrainingDataSetRows(new double[]{0.208502024, 0.466666667, 0.3, 0, 1, 0.3, 1, 0},
+                new double[]{0, 0, 1, 0});
+        dataTrain.addTrainingDataSetRows(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
+                new double[]{0, 0, 1, 0});
     }
     
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
