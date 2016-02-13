@@ -34,7 +34,7 @@ public class DataSetTest
         test = new DataSet(getInputs(),getOutputs());
     }
     
-    public void testingDataSet_8_4()
+    public void addTestingDataSetRows()
     {
         test = new DataSet(8,4);
         
