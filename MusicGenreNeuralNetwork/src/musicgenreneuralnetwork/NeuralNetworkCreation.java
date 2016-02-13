@@ -19,7 +19,7 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class NeuralNetworkCreation 
 {
-    public NeuralNetworkCreation()
+    public void multiLayerPerceptronCreation()
     {
         //Training Data Set
         DataSetTrain dataTrain = new DataSetTrain(8,4);
