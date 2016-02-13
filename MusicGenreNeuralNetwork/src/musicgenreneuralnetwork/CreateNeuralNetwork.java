@@ -53,7 +53,7 @@ public class CreateNeuralNetwork
         
         //Test Data Set
         DataSetTest dataTest = new DataSetTest();
-        dataTest.addTestingDataSetRows();
+        //dataTest.addTestingDataSetRows();
         
         //Load Neural Network
         NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");

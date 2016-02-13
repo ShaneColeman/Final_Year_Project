@@ -34,8 +34,11 @@ public class DataSetTest
         test = new DataSet(getInputs(),getOutputs());
     }
     
-    public void addTestingDataSetRows()
+    public void addTestingDataSetRows(double[] inputs, double[] outputs)
     {
+        test.addRow(new DataSetRow(inputs,outputs));
+        
+        /*
         test = new DataSet(8,4);
         
         test.addRow(new DataSetRow(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0}, 
@@ -49,6 +52,7 @@ public class DataSetTest
         
         test.addRow(new DataSetRow(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
                 new double[]{1,	0, 0, 0}));
+        */
     }
     
     public void setInputs(int inputs)
