@@ -53,7 +53,14 @@ public class CreateNeuralNetwork
         
         //Test Data Set
         DataSetTest dataTest = new DataSetTest();
-        //dataTest.addTestingDataSetRows();
+        dataTest.addTestingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
+                new double[]{0, 1, 0, 0});
+        dataTest.addTestingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714}, 
+                new double[]{0, 0, 0, 1});
+        dataTest.addTestingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
+                new double[]{0, 0, 0, 1});
+        dataTest.addTestingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
+                new double[]{1,	0, 0, 0});
         
         //Load Neural Network
         NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
