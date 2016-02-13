@@ -20,9 +20,13 @@ import org.neuroph.util.TransferFunctionType;
 public class NeuralNetworkCreation 
 {
     private DataSetTrain dataTrain;
+    private DataSetTest dataTest;
     
     public void multiLayerPerceptronCreation()
     {
+        //Training Data Set - Replaced with dataSetTrainingCreation() method. Replace here if needed.
+        dataSetTrainingCreation();
+        
         //Multi-Layer Perceptron Artificial Neural Network 
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
@@ -42,16 +46,8 @@ public class NeuralNetworkCreation
         mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
         System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
-        //Test Data Set
-        DataSetTest dataTest = new DataSetTest();
-        dataTest.addTestingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
-                new double[]{0, 1, 0, 0});
-        dataTest.addTestingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714}, 
-                new double[]{0, 0, 0, 1});
-        dataTest.addTestingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
-                new double[]{0, 0, 0, 1});
-        dataTest.addTestingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
-                new double[]{1,	0, 0, 0});
+        //Test Data Set - Replaced with dataSetTestingCreation() method. Replace here if needed.
+        dataSetTestingCreation();
         
         //Load Neural Network
         NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
@@ -65,71 +61,13 @@ public class NeuralNetworkCreation
         
         //Date and Time
         Date date = new Date();
-        System.out.println("Date and Time: " + date.toString());
-
-        
-        //Multiple Multi-Layer Perceptron Artificial Neural Networks
-        /*
-        MultiLayerPerceptronANN mlpANN2 = new MultiLayerPerceptronANN();
-        mlpANN2.multiLayerPerceptron(TransferFunctionType.GAUSSIAN, 7, 6, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Gaussian, 7, 6, 4)");
-        mlpANN1.saveNeuralNetwork("mlp2_gau_7_6_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Gaussian, 7, 6, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN3 = new MultiLayerPerceptronANN();
-        mlpANN3.multiLayerPerceptron(TransferFunctionType.LINEAR, 6, 4, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Linear, 6, 4, 4)");
-        mlpANN3.saveNeuralNetwork("mlp3_lin_6_4_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Linear, 6, 4, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN4 = new MultiLayerPerceptronANN();
-        mlpANN4.multiLayerPerceptron(TransferFunctionType.LOG, 5, 4, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Log, 5, 4, 4)");
-        mlpANN4.saveNeuralNetwork("mlp4_log_5_4_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Log, 5, 4, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN5 = new MultiLayerPerceptronANN();
-        mlpANN5.multiLayerPerceptron(TransferFunctionType.RAMP, 8, 4, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Ramp, 8, 4, 4)");
-        mlpANN5.saveNeuralNetwork("mlp5_ramp_8_4_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Ramp, 8, 4, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN6 = new MultiLayerPerceptronANN();
-        mlpANN6.multiLayerPerceptron(TransferFunctionType.SGN, 7, 5, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sgn, 7, 5, 4)");
-        mlpANN6.saveNeuralNetwork("mlp6_sgn_7_5_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Sgn, 7, 5, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN7 = new MultiLayerPerceptronANN();
-        mlpANN7.multiLayerPerceptron(TransferFunctionType.SIN, 6, 5, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sin, 6, 5, 4)");
-        mlpANN7.saveNeuralNetwork("mlp7_sin_6_5_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Sin, 6, 5, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN8 = new MultiLayerPerceptronANN();
-        mlpANN8.multiLayerPerceptron(TransferFunctionType.STEP, 5, 3, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Step, 5, 3, 4)");
-        mlpANN8.saveNeuralNetwork("mlp8_step_5_3_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Step, 5, 3, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN9 = new MultiLayerPerceptronANN();
-        mlpANN9.multiLayerPerceptron(TransferFunctionType.TANH, 4, 2, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Tnah, 4, 2, 4)");
-        mlpANN9.saveNeuralNetwork("mlp9_tnah_4_2_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Tnah, 4, 2, 4) saved");
-        
-        MultiLayerPerceptronANN mlpANN10 = new MultiLayerPerceptronANN();
-        mlpANN10.multiLayerPerceptron(TransferFunctionType.TRAPEZOID, 7, 4, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Trapezoid, 7, 4, 4)");
-        mlpANN10.saveNeuralNetwork("mlp10_trap_7_4_4.nnet");
-        System.out.println("Multi-Layer Perceptron A.N.N. (Trapezoid, 7, 4, 4) saved");
-        */
+        System.out.println("\nDate and Time: " + date.toString()); 
     }
     
-    public void dataSetTrainingCreation()
+    private void dataSetTrainingCreation()
     {
-        //Training Data Set
         dataTrain = new DataSetTrain(8,4);
+        
         dataTrain.addTrainingDataSetRows(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0},
                 new double[]{0, 0, 1, 0});
         dataTrain.addTrainingDataSetRows(new double[]{0.237854251, 0.733333333, 0.6, 0, 1, 0.025, 0.818181818, 0.428571429},
@@ -138,6 +76,20 @@ public class NeuralNetworkCreation
                 new double[]{0, 0, 1, 0});
         dataTrain.addTrainingDataSetRows(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
                 new double[]{0, 0, 1, 0});
+    }
+    
+    private void dataSetTestingCreation()
+    {
+        dataTest = new DataSetTest();
+        
+        dataTest.addTestingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
+                new double[]{0, 1, 0, 0});
+        dataTest.addTestingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714}, 
+                new double[]{0, 0, 0, 1});
+        dataTest.addTestingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
+                new double[]{0, 0, 0, 1});
+        dataTest.addTestingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
+                new double[]{1,	0, 0, 0});
     }
     
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)

@@ -18,7 +18,6 @@ public class ANNDriver {
     {
         NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
         
-        neuralNetwork.dataSetTrainingCreation();
         neuralNetwork.multiLayerPerceptronCreation();
     }
     
