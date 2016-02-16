@@ -33,14 +33,14 @@ public class NeuralNetworkCreation
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
         
         //Learning the Data Set
-        mlpANN1.learnDataSet(dataTrain.getDataSet());
+        mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
         
         //Input / Output (Desired) Values - Train Data Set
-        System.out.println("\nInput / Output Values (Desired): " + dataTrain.getDataSet().getRows());
+        System.out.println("\nInput / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
         
         //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
         System.out.println("\nTesting Trained Neural Network");
-        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getDataSet());
+        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
         
         //Save Neural Network
         mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -53,11 +53,11 @@ public class NeuralNetworkCreation
         NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
         
         //Input / Output (Desired) Values - Test Data Set
-        System.out.println("\nInput / Output Values (Desired): " + dataTest.getDataSet().getRows());
+        System.out.println("\nInput / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
         
         //Test Loaded Neural Network
         System.out.println("\nTesting Loaded Neural Network");
-        testNeuralNetwork(loadMLP,dataTest.getDataSet());
+        testNeuralNetwork(loadMLP,dataTest.getTestingDataSet());
         
         //Date and Time
         Date date = new Date();
@@ -80,7 +80,7 @@ public class NeuralNetworkCreation
     
     private void dataSetTestingCreation()
     {
-        dataTest = new DataSetTest();
+        dataTest = new DataSetTest(8,4);
         
         dataTest.addTestingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
                 new double[]{0, 1, 0, 0});

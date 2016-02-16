@@ -15,11 +15,18 @@ public abstract class DataSetANN
 {
     private int inputs;
     private int outputs;
-    private DataSet dataSet;
+    //private DataSet dataSet;
     
-    public void addTrainingDataSetRows(double[] inputs, double[] outputs){};
-    
-    public void addTestingDataSetRows(double[] inputs, double[] outputs){};
+    public DataSetANN(int inputs, int outputs)
+    {
+        this.inputs = inputs;
+        this.outputs = outputs;
+
+        //setNumberOfInputs(inputs);
+        //setNumberOfOutputs(outputs);
+        
+        //dataSet = new DataSet(getNumberOfInputs(), getNumberOfOutputs());
+    }
     
     public void setNumberOfInputs(int inputs){this.inputs = inputs;}
     
@@ -29,6 +36,6 @@ public abstract class DataSetANN
     
     public int getNumberOfOutputs(){return outputs;}
     
-    public DataSet getDataSet(){return dataSet;}
+    //public DataSet getDataSet(){return dataSet;}
      
 }

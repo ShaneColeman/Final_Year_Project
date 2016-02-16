@@ -12,26 +12,17 @@ import org.neuroph.core.data.DataSetRow;
  *
  * @author Windows
  */
-public class DataSetTest 
+public class DataSetTest extends DataSetANN
 {
     private DataSet test;
-    private int inputs;
-    private int outputs;
-    
-    public DataSetTest()
-    {
-        setInputs(0);
-        setOutputs(0);
-        
-        test = new DataSet(getInputs(),getOutputs());
-    }
+    //private int inputs;
+    //private int outputs;
     
     public DataSetTest(int inputs, int outputs)
     {
-        setInputs(inputs);
-        setOutputs(outputs);
+        super(inputs, outputs);
         
-        test = new DataSet(getInputs(),getOutputs());
+        test = new DataSet(inputs,outputs);
     }
     
     public void addTestingDataSetRows(double[] inputs, double[] outputs)
@@ -39,28 +30,35 @@ public class DataSetTest
         test.addRow(new DataSetRow(inputs,outputs));
     }
     
-    public void setInputs(int inputs)
+    /*
+    @Override
+    public void setNumberOfInputs(int inputs)
     {
         this.inputs = inputs;
     }
     
-    public void setOutputs(int outputs)
+    @Override
+    public void setNumberOfOutputs(int outputs)
     {
         this.outputs = outputs;
     }
     
-    public int getInputs()
+    @Override
+    public int getNumberOfInputs()
     {
         return inputs;
     }
     
-    public int getOutputs()
+    @Override
+    public int getNumberOfOutputs()
     {
         return outputs;
     }
+    */
     
-    public DataSet getDataSet()
+    public DataSet getTestingDataSet()
     {
         return test;
     }
+    
 }
