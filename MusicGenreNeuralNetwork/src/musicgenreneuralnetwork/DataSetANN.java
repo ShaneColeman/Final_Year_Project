@@ -9,6 +9,11 @@ package musicgenreneuralnetwork;
  *
  * @author Windows
  */
-public class DataSetANN {
+public abstract class DataSetANN 
+{
+    public void addTrainingDataSetRows(double[] inputs, double[] outputs){};
+    
+    public void addTestingDataSetRows(double[] inputs, double[] outputs){};
+    
     
 }
