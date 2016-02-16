@@ -20,18 +20,18 @@ public class DataSetTrain
     
     public DataSetTrain()
     {
-        setInputs(0);
-        setOutputs(0);
+        setNumberOfInputs(0);
+        setNumberOfOutputs(0);
         
-        train = new DataSet(getInputs(),getOutputs());
+        train = new DataSet(getNumberOfInputs(),getNumberOfOutputs());
     }
     
     public DataSetTrain(int inputs, int outputs)
     {
-        setInputs(inputs);
-        setOutputs(outputs);
+        setNumberOfInputs(inputs);
+        setNumberOfOutputs(outputs);
         
-        train = new DataSet(getInputs(),getOutputs());
+        train = new DataSet(getNumberOfInputs(),getNumberOfOutputs());
     }
 
     
@@ -40,22 +40,22 @@ public class DataSetTrain
         train.addRow(new DataSetRow(inputs,outputs));
     }
     
-    public void setInputs(int inputs)
+    public void setNumberOfInputs(int inputs)
     {
         this.inputs = inputs;
     }
     
-    public void setOutputs(int outputs)
+    public void setNumberOfOutputs(int outputs)
     {
         this.outputs = outputs;
     }
     
-    public int getInputs()
+    public int getNumberOfInputs()
     {
         return inputs;
     }
     
-    public int getOutputs()
+    public int getNumberOfOutputs()
     {
         return outputs;
     }
