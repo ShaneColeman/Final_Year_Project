@@ -33,11 +33,20 @@ public class NeuralNetworkCreation
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
          
+        BackPropagation backP = new BackPropagation();
+        backP.setMaxError(0.04);
+        backP.setLearningRate(0.2);
+        //backP.se
+        
+        mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),backP);
+        
         //Learning the Data Set
-        mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
+        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
         
         //Input / Output (Desired) Values - Train Data Set
         System.out.println("\nInput / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+        
+        System.out.println("\nMax Error: " + backP.getTotalNetworkError());
         
         //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
         System.out.println("\nTesting Trained Neural Network");
@@ -103,6 +112,7 @@ public class NeuralNetworkCreation
             double[] networkOutput = nnet.getOutput();
             System.out.println("Input: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(networkOutput));
+            
         }
     }
 }

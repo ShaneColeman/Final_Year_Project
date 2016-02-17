@@ -7,6 +7,7 @@ package musicgenreneuralnetwork;
 
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.learning.LearningRule;
+import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.util.TransferFunctionType;
 
 /**
@@ -21,5 +22,5 @@ public abstract class NeuralNetworkANN
     
     public void learnDataSet(DataSet dataSet){};
     
-    public void learnDataSet(DataSet dataSet, LearningRule learningRule){};
+    public void learnDataSet(DataSet dataSet, BackPropagation learningRule){};
 }

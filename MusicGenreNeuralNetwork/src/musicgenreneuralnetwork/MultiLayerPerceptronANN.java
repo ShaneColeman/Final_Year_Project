@@ -7,6 +7,7 @@ package musicgenreneuralnetwork;
 
 import org.neuroph.core.data.DataSet;
 import org.neuroph.nnet.MultiLayerPerceptron;
+import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.util.TransferFunctionType;
 
 /**
@@ -33,6 +34,12 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     public void learnDataSet(DataSet dataSet)
     {
         multiLayer.learn(dataSet);
+    }
+    
+    @Override
+    public void learnDataSet(DataSet dataSet, BackPropagation learningRule)
+    {
+        multiLayer.learn(dataSet, learningRule);
     }
     
     public MultiLayerPerceptron getMultiLayerPerceptron()
