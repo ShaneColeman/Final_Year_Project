@@ -22,6 +22,7 @@ public class NeuralNetworkCreation
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
+    private BackPropagation backP;
     
     public void multiLayerPerceptronCreation()
     {
@@ -33,11 +34,12 @@ public class NeuralNetworkCreation
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
          
-        BackPropagation backP = new BackPropagation();
+        backP = new BackPropagation();
         backP.setMaxError(0.04);
         backP.setLearningRate(0.2);
         //backP.se
         
+        //Learning the Data Set using BackPropagation 
         mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),backP);
         
         //Learning the Data Set
@@ -112,7 +114,15 @@ public class NeuralNetworkCreation
             double[] networkOutput = nnet.getOutput();
             System.out.println("Input: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(networkOutput));
-            
+        }
+        
+        if(testDataSet.isSupervised())
+        {
+            System.out.println("\nSupervised = True");
+        }
+        else
+        {
+            System.out.println("\nSupervised = False");
         }
     }
 }
