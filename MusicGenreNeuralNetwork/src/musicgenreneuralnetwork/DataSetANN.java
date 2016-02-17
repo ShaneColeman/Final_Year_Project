@@ -5,8 +5,6 @@
  */
 package musicgenreneuralnetwork;
 
-import org.neuroph.core.data.DataSet;
-
 /**
  *
  * @author Windows
