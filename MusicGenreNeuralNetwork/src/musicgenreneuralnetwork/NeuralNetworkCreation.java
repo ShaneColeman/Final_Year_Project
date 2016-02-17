@@ -11,6 +11,7 @@ import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
+import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.util.TransferFunctionType;
 
 /**
@@ -31,7 +32,7 @@ public class NeuralNetworkCreation
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
-        
+         
         //Learning the Data Set
         mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
         
