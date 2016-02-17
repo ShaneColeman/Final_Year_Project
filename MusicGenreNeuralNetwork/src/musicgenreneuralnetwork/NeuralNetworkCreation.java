@@ -55,8 +55,8 @@ public class NeuralNetworkCreation
         testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
         
         //Save Neural Network
-        mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-        System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+        //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+        //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
         //Test Data Set - Replaced with dataSetTestingCreation() method. Replace here if needed.
         dataSetTestingCreation();
