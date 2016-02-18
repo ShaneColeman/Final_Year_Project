@@ -34,6 +34,10 @@ public abstract class DataSetANN
     
     public int getNumberOfOutputs(){return outputs;}
     
+    public void addTrainingDataSetRows(double[] inputs, double[] outputs){};
+    
+    public void addTestingDataSetRows(double[] inputs, double[] outputs){};
+    
     //public DataSet getDataSet(){return dataSet;}
      
 }
