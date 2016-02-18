@@ -29,6 +29,9 @@ public class NeuralNetworkCreation
         //Training Data Set - Replaced with dataSetTrainingCreation() method. Replace here if needed.
         dataSetTrainingCreation();
         
+        //Place Line Of Code WIthin A New Method
+        //DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt", 8, 4, ",");
+        
         //Multi-Layer Perceptron Artificial Neural Network 
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);

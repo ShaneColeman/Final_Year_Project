@@ -46,6 +46,10 @@ public class DataSetTrain extends DataSetANN
         train.addRow(new DataSetRow(inputs,outputs));
     }
     
+    public static DataSet trainingSetFromFile(String fileName, int inputs, int outputs, String delimiter)
+    {
+        return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
+    }
     /*
     public void setNumberOfInputs(int inputs)
     {
