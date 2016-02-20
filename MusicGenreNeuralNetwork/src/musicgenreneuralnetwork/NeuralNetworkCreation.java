@@ -40,16 +40,15 @@ public class NeuralNetworkCreation
         backP = new BackPropagation();
         backP.setMaxError(0.04);
         backP.setLearningRate(0.2);
-        //backP.se
         
         //Learning the Data Set using BackPropagation 
         mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),backP);
         
         //Learning the Data Set
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
+        mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
         
         //Input / Output (Desired) Values - Train Data Set
-        System.out.println("\nInput / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+        System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
         
         System.out.println("\nMax Error: " + backP.getTotalNetworkError());
         
@@ -68,7 +67,7 @@ public class NeuralNetworkCreation
         NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
         
         //Input / Output (Desired) Values - Test Data Set
-        System.out.println("\nInput / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
+        System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
         
         //Test Loaded Neural Network
         System.out.println("\nTesting Loaded Neural Network");
