@@ -11,6 +11,7 @@ import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
+import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -23,18 +24,18 @@ public class NeuralNetworkCreation
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
-    //private BackPropagation bP;
+    private BackPropagation bP;
     private MomentumBackpropagation mBP;
     
     public void multiLayerPerceptronCreation()
     {
         //Training Data Set
-        dataSetTrainingCreation();
+        //dataSetTrainingCreation();
         
         //Place Line Of Code WIthin A New Method
-        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt", 8, 4, "\t");
+        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
         
-        //Multi-Layer Perceptron Artificial Neural Network 
+        //Multi-Layer Perceptron Artificial Neural Network  - User Defined
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
         System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
@@ -54,8 +55,9 @@ public class NeuralNetworkCreation
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),backP);
         
         //Learning the Data Set using Momentum BackPropagation 
-        mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
+        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
         //mlpANN1.learnDataSet(dS,mBP);
+        mlpANN1.learnDataSet(dS, mBP);
         
         //Learning the Data Set - No Learning Rule
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
@@ -127,9 +129,7 @@ public class NeuralNetworkCreation
     
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
     {
-        for (Iterator<DataSetRow> it = testDataSet.getRows().iterator(); it.hasNext();) 
-        {
-            DataSetRow dataRow = it.next();
+        for (DataSetRow dataRow : testDataSet.getRows()) {
             nnet.setInput(dataRow.getInput());
             nnet.calculate();
             double[] networkOutput = nnet.getOutput();
