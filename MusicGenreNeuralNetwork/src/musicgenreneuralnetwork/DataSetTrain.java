@@ -41,6 +41,7 @@ public class DataSetTrain extends DataSetANN
     }
 
     
+    @Override
     public void addTrainingDataSetRows(double[] inputs, double[] outputs)
     {
         train.addRow(new DataSetRow(inputs,outputs));

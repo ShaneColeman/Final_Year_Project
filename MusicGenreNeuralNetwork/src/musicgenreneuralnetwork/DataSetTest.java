@@ -25,6 +25,7 @@ public class DataSetTest extends DataSetANN
         test = new DataSet(inputs,outputs);
     }
     
+    @Override
     public void addTestingDataSetRows(double[] inputs, double[] outputs)
     {
         test.addRow(new DataSetRow(inputs,outputs));
