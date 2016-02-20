@@ -51,6 +51,9 @@ public class NeuralNetworkCreation
         mBP.setLearningRate(0.2);
         mBP.setMomentum(0.7);
         
+        //Learning the Data Set - No Learning Rule
+        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
+
         //Learning the Data Set using BackPropagation 
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),backP);
         
@@ -58,9 +61,6 @@ public class NeuralNetworkCreation
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
         //mlpANN1.learnDataSet(dS,mBP);
         mlpANN1.learnDataSet(dS, mBP);
-        
-        //Learning the Data Set - No Learning Rule
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
         
         //Input / Output (Desired) Values - Train Data Set
         //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
