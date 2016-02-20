@@ -32,7 +32,7 @@ public class NeuralNetworkCreation
         dataSetTrainingCreation();
         
         //Place Line Of Code WIthin A New Method
-        //DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt", 8, 4, "\t");
+        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt", 8, 4, "\t");
         
         //Multi-Layer Perceptron Artificial Neural Network 
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
@@ -61,36 +61,36 @@ public class NeuralNetworkCreation
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
         
         //Input / Output (Desired) Values - Train Data Set
-        System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
-        //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
+        //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+        System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
         
         //Max Error - BackPropagation
         //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
+        System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
         
         //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
         System.out.println("\nTesting Trained Neural Network");
-        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
-        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
-        
-        //Max Error - BackPropagation
-        System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
+        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
         
         //Save Neural Network
         //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
         //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
-        //Test Data Set
-        dataSetTestingCreation();
+        //Test Data Set - Method Call
+        //dataSetTestingCreation();
         
         //Load Neural Network
-        NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+        //NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
         
         //Input / Output (Desired) Values - Test Data Set
-        System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
+        //System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
+        //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
         
         //Test Loaded Neural Network
-        System.out.println("\nTesting Loaded Neural Network");
-        testNeuralNetwork(loadMLP,dataTest.getTestingDataSet());
+        //System.out.println("\nTesting Loaded Neural Network");
+        //testNeuralNetwork(loadMLP,dataTest.getTestingDataSet());
+        //testNeuralNetwork(loadMLP,dS);
         
         //Date and Time
         Date date = new Date();
