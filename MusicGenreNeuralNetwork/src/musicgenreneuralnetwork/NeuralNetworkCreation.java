@@ -26,7 +26,7 @@ public class NeuralNetworkCreation
     
     public void multiLayerPerceptronCreation()
     {
-        //Training Data Set - Replaced with dataSetTrainingCreation() method. Replace here if needed.
+        //Training Data Set
         dataSetTrainingCreation();
         
         //Place Line Of Code WIthin A New Method
@@ -61,7 +61,7 @@ public class NeuralNetworkCreation
         //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
         //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
-        //Test Data Set - Replaced with dataSetTestingCreation() method. Replace here if needed.
+        //Test Data Set
         dataSetTestingCreation();
         
         //Load Neural Network
