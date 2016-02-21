@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
+import org.neuroph.core.Neuron;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -33,8 +33,15 @@ public class NeuralNetworkCreation
         //dataSetTrainingCreation();
         
         //Place Line Of Code WIthin A New Method
+        DataSetTrain train = new DataSetTrain(8,4);
+        
         DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
         
+        for (DataSetRow dataRow : dS.getRows()) 
+        {
+            train.addDataSetRow(dataRow);
+        }
+            
         //Multi-Layer Perceptron Artificial Neural Network  - User Defined
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
@@ -50,7 +57,7 @@ public class NeuralNetworkCreation
         mBP.setMaxError(0.04);
         mBP.setLearningRate(0.2);
         mBP.setMomentum(0.7);
-        
+
         //Learning the Data Set - No Learning Rule
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
 
@@ -60,11 +67,12 @@ public class NeuralNetworkCreation
         //Learning the Data Set using Momentum BackPropagation 
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
         //mlpANN1.learnDataSet(dS,mBP);
-        mlpANN1.learnDataSet(dS, mBP);
+        mlpANN1.learnDataSet(train.getTrainingDataSet(), mBP);
         
         //Input / Output (Desired) Values - Train Data Set
         //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
-        System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
+        //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
+        System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
         
         //Max Error - BackPropagation
         //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
@@ -73,7 +81,8 @@ public class NeuralNetworkCreation
         //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
         System.out.println("\nTesting Trained Neural Network");
         //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
-        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
+        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
+        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),train.getTrainingDataSet());
         
         //Save Neural Network
         //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -111,6 +120,18 @@ public class NeuralNetworkCreation
                 new double[]{0, 0, 1, 0});
         dataTrain.addTrainingDataSetRows(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
                 new double[]{0, 0, 1, 0});
+        dataTrain.addTrainingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
+                new double[]{0, 1, 0, 0});
+        dataTrain.addTrainingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714},
+                new double[]{0, 0, 0, 1});
+        dataTrain.addTestingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
+                new double[]{0, 0, 0, 1});
+        dataTrain.addTestingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
+                new double[]{1,	0, 0, 0});
+        dataTrain.addTestingDataSetRows(new double[]{0.259109312, 0.866666667, 0.8, 0, 0, 0.125, 1, 0.857142857}, 
+                new double[]{1,	0, 0, 0});
+        
+        
     }
     
     private void dataSetTestingCreation()
@@ -129,7 +150,8 @@ public class NeuralNetworkCreation
     
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
     {
-        for (DataSetRow dataRow : testDataSet.getRows()) {
+        for (Iterator<DataSetRow> it = testDataSet.getRows().iterator(); it.hasNext();) {
+            DataSetRow dataRow = it.next();
             nnet.setInput(dataRow.getInput());
             nnet.calculate();
             double[] networkOutput = nnet.getOutput();
