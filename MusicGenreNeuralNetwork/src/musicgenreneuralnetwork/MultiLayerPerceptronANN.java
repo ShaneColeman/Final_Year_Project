@@ -5,6 +5,7 @@
  */
 package musicgenreneuralnetwork;
 
+import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
@@ -46,6 +47,12 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     
     @Override
     public void learnDataSet(DataSet dataSet, MomentumBackpropagation learningRule)
+    {
+       multiLayer.learn(dataSet, learningRule); 
+    }
+    
+    //Remove if unsuccessful
+    public void learnDataSet(BufferedDataSet dataSet, MomentumBackpropagation learningRule)
     {
        multiLayer.learn(dataSet, learningRule); 
     }

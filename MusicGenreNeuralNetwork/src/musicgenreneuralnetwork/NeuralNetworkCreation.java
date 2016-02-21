@@ -5,11 +5,14 @@
  */
 package musicgenreneuralnetwork;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.Neuron;
+import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 import org.neuroph.nnet.learning.BackPropagation;
@@ -27,7 +30,7 @@ public class NeuralNetworkCreation
     private BackPropagation bP;
     private MomentumBackpropagation mBP;
     
-    public void multiLayerPerceptronCreation()
+    public void multiLayerPerceptronCreation() throws FileNotFoundException
     {
         //Training Data Set
         //dataSetTrainingCreation();
@@ -35,11 +38,16 @@ public class NeuralNetworkCreation
         //Place Line Of Code WIthin A New Method
         DataSetTrain train = new DataSetTrain(8,4);
         
-        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
+        //DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
         
-        for (DataSetRow dataRow : dS.getRows()) 
+        File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
+        BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+        
+        
+        for (DataSetRow dataRow : bDS.getRows()) 
         {
             train.addDataSetRow(dataRow);
+            //bDS.addRow(dataRow);
         }
             
         //Multi-Layer Perceptron Artificial Neural Network  - User Defined
@@ -72,7 +80,8 @@ public class NeuralNetworkCreation
         //Input / Output (Desired) Values - Train Data Set
         //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
         //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
-        System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+        //System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+        System.out.println("\nTraining - Input / Output Values (Desired): " + bDS.getRows());
         
         //Max Error - BackPropagation
         //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
@@ -82,7 +91,8 @@ public class NeuralNetworkCreation
         System.out.println("\nTesting Trained Neural Network");
         //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
         //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
-        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
         
         //Save Neural Network
         //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
