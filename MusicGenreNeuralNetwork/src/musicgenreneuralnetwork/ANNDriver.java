@@ -15,12 +15,20 @@ public class ANNDriver {
 
     /**
      * @param args the command line arguments
+     * @throws java.io.FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException 
     {
-        NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
-        
-        neuralNetwork.multiLayerPerceptronCreation();
+        try
+        {
+            NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
+
+            neuralNetwork.multiLayerPerceptronCreation();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
 }

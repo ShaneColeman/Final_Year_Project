@@ -31,91 +31,98 @@ public class NeuralNetworkCreation
     
     public void multiLayerPerceptronCreation() throws FileNotFoundException
     {
-        //Training Data Set
-        //dataSetTrainingCreation();
-        
-        //DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
-        
-        //Place Line Of Code WIthin A New Method
-        DataSetTrain train = new DataSetTrain(8,4);
-        
-        File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt");
-        BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
-        
-        for (DataSetRow dataRow : bDS.getRows()) 
+        try
         {
-            train.addDataSetRow(dataRow);
-            //bDS.addRow(dataRow);
+            //Training Data Set
+            //dataSetTrainingCreation();
+
+            //DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
+
+            //Place Line Of Code WIthin A New Method
+            DataSetTrain train = new DataSetTrain(8,4);
+
+            File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt");
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+
+            for (DataSetRow dataRow : bDS.getRows()) 
+            {
+                train.addDataSetRow(dataRow);
+                //bDS.addRow(dataRow);
+            }
+
+            //Multi-Layer Perceptron Artificial Neural Network  - User Defined
+            MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
+            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
+            System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
+
+            //BackPropagation
+            //bP = new BackPropagation();
+            //bP.setMaxError(0.04);
+            //bP.setLearningRate(0.2);
+
+            //Momentum Back Propagation
+            mBP = new MomentumBackpropagation();
+            mBP.setMaxError(0.04);
+            mBP.setLearningRate(0.2);
+            mBP.setMomentum(0.7);
+
+            //Learning the Data Set - No Learning Rule
+            //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
+
+            //Learning the Data Set using BackPropagation 
+            //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),bP);
+
+            //Learning the Data Set using Momentum BackPropagation 
+            //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
+            //mlpANN1.learnDataSet(dS,mBP);
+            //mlpANN1.learnDataSet(train.getTrainingDataSet(), bP);
+
+            mlp1.learnDataSet(train.getTrainingDataSet(), mBP);
+
+            //Input / Output (Desired) Values - Train Data Set
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
+            System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + bDS.getRows());
+
+            //Max Error - BackPropagation
+            //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
+            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+
+            //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Trained Neural Network");
+            //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
+            //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
+            testNeuralNetwork(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+            //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
+
+            //Save Neural Network
+            //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+
+            //Test Data Set - Method Call
+            //dataSetTestingCreation();
+
+            //Load Neural Network
+            //NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+
+            //Input / Output (Desired) Values - Test Data Set
+            //System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
+            //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
+
+            //Test Loaded Neural Network
+            //System.out.println("\nTesting Loaded Neural Network");
+            //testNeuralNetwork(loadMLP,dataTest.getTestingDataSet());
+            //testNeuralNetwork(loadMLP,dS);
+
+            //Date and Time
+            Date date = new Date();
+            System.out.println("\nDate and Time: " + date.toString()); 
         }
-        
-        //Multi-Layer Perceptron Artificial Neural Network  - User Defined
-        MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
-        mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
-        
-        //BackPropagation
-        //bP = new BackPropagation();
-        //bP.setMaxError(0.04);
-        //bP.setLearningRate(0.2);
-        
-        //Momentum Back Propagation
-        mBP = new MomentumBackpropagation();
-        mBP.setMaxError(0.04);
-        mBP.setLearningRate(0.2);
-        mBP.setMomentum(0.7);
-
-        //Learning the Data Set - No Learning Rule
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
-
-        //Learning the Data Set using BackPropagation 
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),bP);
-        
-        //Learning the Data Set using Momentum BackPropagation 
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
-        //mlpANN1.learnDataSet(dS,mBP);
-        //mlpANN1.learnDataSet(train.getTrainingDataSet(), bP);
-        
-        mlp1.learnDataSet(train.getTrainingDataSet(), mBP);
-        
-        //Input / Output (Desired) Values - Train Data Set
-        //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
-        //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
-        System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
-        //System.out.println("\nTraining - Input / Output Values (Desired): " + bDS.getRows());
-        
-        //Max Error - BackPropagation
-        //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
-        System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
-        
-        //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
-        System.out.println("\nTesting Trained Neural Network");
-        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
-        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
-        testNeuralNetwork(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
-        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
-        
-        //Save Neural Network
-        //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-        //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
-        
-        //Test Data Set - Method Call
-        //dataSetTestingCreation();
-        
-        //Load Neural Network
-        //NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-        
-        //Input / Output (Desired) Values - Test Data Set
-        //System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
-        //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
-        
-        //Test Loaded Neural Network
-        //System.out.println("\nTesting Loaded Neural Network");
-        //testNeuralNetwork(loadMLP,dataTest.getTestingDataSet());
-        //testNeuralNetwork(loadMLP,dS);
-        
-        //Date and Time
-        Date date = new Date();
-        System.out.println("\nDate and Time: " + date.toString()); 
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
     
     private void dataSetTrainingCreation()
