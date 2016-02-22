@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
-import org.neuroph.core.Neuron;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
@@ -33,23 +32,24 @@ public class NeuralNetworkCreation
     public void multiLayerPerceptronCreation() throws FileNotFoundException
     {
         //Training Data Set
-        //dataSetTrainingCreation();
+        dataSetTrainingCreation();
         
         //Place Line Of Code WIthin A New Method
-        DataSetTrain train = new DataSetTrain(8,4);
+        //DataSetTrain train = new DataSetTrain(8,4);
         
         //DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet4.txt", 8, 4, "\t");
         
-        File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
-        BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+        //File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet20.txt");
+        //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
         
-        
+        /*
         for (DataSetRow dataRow : bDS.getRows()) 
         {
             train.addDataSetRow(dataRow);
             //bDS.addRow(dataRow);
         }
-            
+        */
+        
         //Multi-Layer Perceptron Artificial Neural Network  - User Defined
         MultiLayerPerceptronANN mlpANN1 = new MultiLayerPerceptronANN();
         mlpANN1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
@@ -62,7 +62,7 @@ public class NeuralNetworkCreation
         
         //Momentum Back Propagation
         mBP = new MomentumBackpropagation();
-        mBP.setMaxError(0.04);
+        mBP.setMaxError(0.07);
         mBP.setLearningRate(0.2);
         mBP.setMomentum(0.7);
 
@@ -70,18 +70,19 @@ public class NeuralNetworkCreation
         //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet());
 
         //Learning the Data Set using BackPropagation 
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),backP);
+        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),bP);
         
         //Learning the Data Set using Momentum BackPropagation 
-        //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
+        mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
         //mlpANN1.learnDataSet(dS,mBP);
-        mlpANN1.learnDataSet(train.getTrainingDataSet(), mBP);
+        //mlpANN1.learnDataSet(train.getTrainingDataSet(), bP);
+        //mlpANN1.learnDataSet(train.getTrainingDataSet(), mBP);
         
         //Input / Output (Desired) Values - Train Data Set
-        //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+        System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
         //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
         //System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
-        System.out.println("\nTraining - Input / Output Values (Desired): " + bDS.getRows());
+        //System.out.println("\nTraining - Input / Output Values (Desired): " + bDS.getRows());
         
         //Max Error - BackPropagation
         //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
@@ -89,10 +90,10 @@ public class NeuralNetworkCreation
         
         //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
         System.out.println("\nTesting Trained Neural Network");
-        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
+        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
         //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
         //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),train.getTrainingDataSet());
-        testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
+        //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
         
         //Save Neural Network
         //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -134,13 +135,14 @@ public class NeuralNetworkCreation
                 new double[]{0, 1, 0, 0});
         dataTrain.addTrainingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714},
                 new double[]{0, 0, 0, 1});
-        dataTrain.addTestingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
+        dataTrain.addTrainingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
                 new double[]{0, 0, 0, 1});
-        dataTrain.addTestingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
+        dataTrain.addTrainingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
                 new double[]{1,	0, 0, 0});
-        dataTrain.addTestingDataSetRows(new double[]{0.259109312, 0.866666667, 0.8, 0, 0, 0.125, 1, 0.857142857}, 
+        dataTrain.addTrainingDataSetRows(new double[]{0.259109312, 0.866666667, 0.8, 0, 0, 0.125, 1, 0.857142857}, 
                 new double[]{1,	0, 0, 0});
-        
+        dataTrain.addTrainingDataSetRows(new double[]{0.197368421, 0.6, 0.2, 0, 1, 0.35, 0, 0}, 
+                new double[]{0,	0, 1, 0}); 
         
     }
     
@@ -160,7 +162,10 @@ public class NeuralNetworkCreation
     
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
     {
-        for (Iterator<DataSetRow> it = testDataSet.getRows().iterator(); it.hasNext();) {
+        Iterator<DataSetRow> it = testDataSet.getRows().iterator();
+        
+        while(it.hasNext())
+        {
             DataSetRow dataRow = it.next();
             nnet.setInput(dataRow.getInput());
             nnet.calculate();
