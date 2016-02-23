@@ -126,6 +126,26 @@ public class NeuralNetworkCreation
         }
     }
     
+    public void loadNeuralNetwork() throws FileNotFoundException
+    {
+        DataSetTrain test = new DataSetTrain(8,4);
+
+        File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
+        BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+        
+        Iterator<DataSetRow> it = bDS.getRows().iterator();
+        while(it.hasNext())
+        {
+            DataSetRow dataRow = it.next();
+            test.addDataSetRow(dataRow);
+            //bDS.addRow(dataRow);
+        }
+        
+        NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+        
+        testNeuralNetwork(load,test.getTrainingDataSet());
+    }
+    
     private void dataSetTrainingCreation()
     {
         dataTrain = new DataSetTrain(8,4);
