@@ -31,6 +31,14 @@ public class DataSetTest extends DataSetANN
         test.addRow(new DataSetRow(inputs,outputs));
     }
     
+    
+    @Override
+    public void addDataSetRow(DataSetRow dataSetRow)
+    {
+        test.addRow(dataSetRow);
+    }
+    
+    
     /*
     @Override
     public void setNumberOfInputs(int inputs)

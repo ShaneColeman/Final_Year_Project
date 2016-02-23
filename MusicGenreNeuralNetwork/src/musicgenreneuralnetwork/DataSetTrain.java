@@ -48,10 +48,13 @@ public class DataSetTrain extends DataSetANN
         train.addRow(new DataSetRow(inputs,outputs));
     }
     
+    
+    @Override
     public void addDataSetRow(DataSetRow dataSetRow)
     {
         train.addRow(dataSetRow);
     }
+    
     
     public static DataSet trainingSetFromFile(String fileName, int inputs, int outputs, String delimiter)
     {

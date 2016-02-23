@@ -128,10 +128,19 @@ public class NeuralNetworkCreation
     
     public void loadNeuralNetwork() throws FileNotFoundException
     {
-        DataSetTrain test = new DataSetTrain(8,4);
+        DataSetTest test = new DataSetTest(8,4);
 
         File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
         BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+        
+        int COLUMN_SIZE = (test.getNumberOfInputs() + test.getNumberOfOutputs());
+        
+        String[] columnNames = new String[COLUMN_SIZE];
+        columnNames[0] = "Test";
+        
+        bDS.setColumnNames(columnNames);
+        
+        System.out.println(Arrays.toString(bDS.getColumnNames()));
         
         Iterator<DataSetRow> it = bDS.getRows().iterator();
         while(it.hasNext())
@@ -143,7 +152,7 @@ public class NeuralNetworkCreation
         
         NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
         
-        testNeuralNetwork(load,test.getTrainingDataSet());
+        testNeuralNetwork(load,test.getTestingDataSet());
     }
     
     private void dataSetTrainingCreation()
