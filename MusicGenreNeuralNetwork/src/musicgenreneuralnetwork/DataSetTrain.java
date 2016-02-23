@@ -5,6 +5,7 @@
  */
 package musicgenreneuralnetwork;
 
+import java.util.List;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 
@@ -84,5 +85,10 @@ public class DataSetTrain extends DataSetANN
     public DataSet getTrainingDataSet()
     {
         return train;
+    }
+    
+    public List<DataSetRow> getDataSetRows()
+    {
+        return train.getRows();
     }
 }

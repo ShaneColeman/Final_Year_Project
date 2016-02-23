@@ -14,6 +14,7 @@ import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
+import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -95,9 +96,9 @@ public class NeuralNetworkCreation
             //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
             testNeuralNetwork(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
             //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
-
+            
             //Save Neural Network
-            //mlpANN1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
             //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
 
             //Test Data Set - Method Call
@@ -169,24 +170,17 @@ public class NeuralNetworkCreation
     public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
     {
         Iterator<DataSetRow> it = testDataSet.getRows().iterator();
+        double[] networkOutput;
         
         while(it.hasNext())
         {
             DataSetRow dataRow = it.next();
             nnet.setInput(dataRow.getInput());
             nnet.calculate();
-            double[] networkOutput = nnet.getOutput();
+            networkOutput = nnet.getOutput();
             System.out.println("Input: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(networkOutput));
-        }
-        
-        if(testDataSet.isSupervised())
-        {
-            System.out.println("\nSupervised = True");
-        }
-        else
-        {
-            System.out.println("\nSupervised = False");
+           
         }
     }
 }
