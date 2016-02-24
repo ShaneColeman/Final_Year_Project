@@ -30,6 +30,48 @@ public class NeuralNetworkCreation
     private BackPropagation bP;
     private MomentumBackpropagation mBP;
     
+    public void learnTestANNDataSetTrain()
+    {
+        try
+        {
+            //Training Data Set
+            dataSetTrainingCreation();
+
+            //Multi-Layer Perceptron Artificial Neural Network  - User Defined
+            MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
+            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
+            System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
+
+            //Momentum Back Propagation
+            mBP = new MomentumBackpropagation();
+            mBP.setMaxError(0.04);
+            mBP.setLearningRate(0.2);
+            mBP.setMomentum(0.7);
+
+            //Learning the Data Set using Momentum BackPropagation 
+            mlp1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
+            
+            //Input / Output (Desired) Values - Train Data Set
+            System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+            
+            //Max Error - BackPropagation
+            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            
+            //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Trained Neural Network");
+            testNeuralNetwork(mlp1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
+            
+            //Save Neural Network
+            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    
     public void multiLayerPerceptronCreation() throws FileNotFoundException
     {
         try
