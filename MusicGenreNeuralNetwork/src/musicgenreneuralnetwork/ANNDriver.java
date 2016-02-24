@@ -23,10 +23,9 @@ public class ANNDriver {
         try
         {
             DataSetTrain train = new DataSetTrain(8,4);
-            train.buffered("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
+            train.getBufferedDataSet("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
             
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
-            
             
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
             //mlp2.multiLayerPerceptron(TransferFunctionType.LOG, 8, 4, 4);
@@ -81,7 +80,7 @@ public class ANNDriver {
         try
         {
             DataSetTrain train = new DataSetTrain(8,4);
-            train.buffered("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
+            train.getBufferedDataSet("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
             
             MultiLayerPerceptronANN mlp2 = new MultiLayerPerceptronANN();
             

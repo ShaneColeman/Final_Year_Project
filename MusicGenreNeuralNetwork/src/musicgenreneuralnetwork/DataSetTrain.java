@@ -64,7 +64,7 @@ public class DataSetTrain extends DataSetANN
         return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
     }
     
-    public void buffered(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
+    public void getBufferedDataSet(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
     {
         File file = new File(fileName);
             BufferedDataSet bDS = new BufferedDataSet(file,inputs,outputs,delimiter);

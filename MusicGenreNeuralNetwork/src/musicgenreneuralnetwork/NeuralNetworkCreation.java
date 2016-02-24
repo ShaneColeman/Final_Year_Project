@@ -29,20 +29,6 @@ public class NeuralNetworkCreation
     private DataSetTest dataTest;
     private BackPropagation bP;
     private MomentumBackpropagation mBP;
-    private MultiLayerPerceptron multiLayer;
-    
-    
-    public void createNeuralNetwork(TransferFunctionType type, int inputs, int hidden, int outputs)
-    {
-        multiLayer = new MultiLayerPerceptron(type,inputs,hidden,outputs);
-        System.out.println("\nMulti-Layer Perceptron ANN Created, Transfer Function Type: " + type + 
-                " ,Inputs: " + inputs + ", Outputs: " + outputs);
-    }
-    
-    public MultiLayerPerceptron getNeuralNetwork()
-    {
-        return multiLayer;
-    }
     
     public void learnTestANNDataSetTrain()
     {
@@ -122,11 +108,6 @@ public class NeuralNetworkCreation
         
         currentDateAndTime();
     }   
-    
-    public void saveNeuralNetwork(String name)
-    {
-        multiLayer.save(name);
-    }
     
     public void multiLayerPerceptronCreation() throws FileNotFoundException
     {
