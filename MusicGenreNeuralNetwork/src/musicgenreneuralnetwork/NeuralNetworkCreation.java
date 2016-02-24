@@ -128,31 +128,55 @@ public class NeuralNetworkCreation
     
     public void loadNeuralNetwork() throws FileNotFoundException
     {
-        DataSetTest test = new DataSetTest(8,4);
-
-        File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
-        BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
-        
-        int COLUMN_SIZE = (test.getNumberOfInputs() + test.getNumberOfOutputs());
-        
-        String[] columnNames = new String[COLUMN_SIZE];
-        columnNames[0] = "Test";
-        
-        bDS.setColumnNames(columnNames);
-        
-        System.out.println(Arrays.toString(bDS.getColumnNames()));
-        
-        Iterator<DataSetRow> it = bDS.getRows().iterator();
-        while(it.hasNext())
+        try
         {
-            DataSetRow dataRow = it.next();
-            test.addDataSetRow(dataRow);
-            //bDS.addRow(dataRow);
+            DataSetTest test = new DataSetTest(8,4);
+
+            File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+
+            setColumnNames(test.getTestingDataSet(),bDS);
+
+            System.out.println(Arrays.toString(bDS.getColumnNames()));
+
+            Iterator<DataSetRow> it = bDS.getRows().iterator();
+            while(it.hasNext())
+            {
+                DataSetRow dataRow = it.next();
+                test.addDataSetRow(dataRow);
+                //bDS.addRow(dataRow);
+            }
+
+            NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+
+            testNeuralNetwork(load,test.getTestingDataSet());
         }
-        
-        NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-        
-        testNeuralNetwork(load,test.getTestingDataSet());
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    public void setColumnNames(DataSet dataSet, BufferedDataSet bufferedDataSet)
+    {
+        final int COLUMN_SIZE = (dataSet.getInputSize() + dataSet.getOutputSize());
+
+            String[] columnNames = new String[COLUMN_SIZE];
+            
+            columnNames[0] = "Author and Song Duration";
+            columnNames[1] = "Tempo (Beats per Minute)";
+            columnNames[2] = "Root Mean Square (Amplitude)";
+            columnNames[3] = "Sampling Frequency (kHz)";
+            columnNames[4] = "Sampling Rate (b)";
+            columnNames[5] = "Dynamic Range";
+            columnNames[6] = "Tonality";
+            columnNames[7] = "Number of Digital Errors";
+            columnNames[8] = "1 0 0 0 - Rock";
+            columnNames[9] = "0 1 0 0 - Classical";
+            columnNames[10] = "0 0 1 0 - Jazz";
+            columnNames[11] = "0 0 0 1 - Folk";
+            
+            bufferedDataSet.setColumnNames(columnNames);
     }
     
     private void dataSetTrainingCreation()
@@ -207,7 +231,7 @@ public class NeuralNetworkCreation
             nnet.setInput(dataRow.getInput());
             nnet.calculate();
             networkOutput = nnet.getOutput();
-            System.out.println("Input: " + Arrays.toString(dataRow.getInput()));
+            System.out.println("\nInput: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(networkOutput));
            
         }
