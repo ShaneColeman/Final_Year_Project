@@ -5,7 +5,10 @@
  */
 package musicgenreneuralnetwork;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
+import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 
@@ -59,6 +62,18 @@ public class DataSetTrain extends DataSetANN
     public static DataSet trainingSetFromFile(String fileName, int inputs, int outputs, String delimiter)
     {
         return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
+    }
+    
+    public void buffered(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
+    {
+        File file = new File(fileName);
+            BufferedDataSet bDS = new BufferedDataSet(file,inputs,outputs,delimiter);
+
+            for (DataSetRow dataRow : bDS.getRows()) 
+            {
+                train.addRow(dataRow);
+                //bDS.addRow(dataRow);
+            }
     }
     /*
     public void setNumberOfInputs(int inputs)

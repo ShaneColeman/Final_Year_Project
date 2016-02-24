@@ -24,6 +24,9 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     public void multiLayerPerceptron(TransferFunctionType type, int inputs, int hidden, int outputs)
     {
         multiLayer = new MultiLayerPerceptron(type,inputs,hidden,outputs);
+        
+        System.out.println("\nMulti-Layer Perceptron ANN Created, Transfer Function Type: " + type + 
+                " ,Inputs: " + inputs + ", Outputs: " + outputs);
     }
     
     @Override
