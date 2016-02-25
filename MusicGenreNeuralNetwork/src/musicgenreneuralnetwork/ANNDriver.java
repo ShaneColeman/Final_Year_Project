@@ -38,6 +38,8 @@ public class ANNDriver {
             
             mlp1.learnDataSet(train.getTrainingDataSet(),mBP);
             
+            System.out.println("\nCurrent Iteration" + mBP.getCurrentIteration());
+            
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
             System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
@@ -48,7 +50,7 @@ public class ANNDriver {
             
             test.testNeuralNetwork(mlp1.getMultiLayerPerceptron(), train.getTrainingDataSet());
            
-            mlp1.saveNeuralNetwork("test_mlp1.nnet");
+            //mlp1.saveNeuralNetwork("test_mlp1.nnet");
             
             
             //NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
@@ -106,7 +108,7 @@ public class ANNDriver {
             
             test.testNeuralNetwork(mlp2.getMultiLayerPerceptron(), train.getTrainingDataSet());
            
-            mlp2.saveNeuralNetwork("test_mlp2.nnet");
+            //mlp2.saveNeuralNetwork("test_mlp2.nnet");
             
        
         }
@@ -121,7 +123,7 @@ public class ANNDriver {
         ANNDriver ann = new ANNDriver();
         
         ann.mlp1();
-        ann.mlp2();
+        //ann.mlp2();
     }
 
     
