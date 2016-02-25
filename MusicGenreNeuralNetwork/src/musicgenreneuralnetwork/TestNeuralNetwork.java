@@ -30,7 +30,7 @@ public class TestNeuralNetwork
             networkOutput = nnet.getOutput();
             System.out.println("\nInput: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(networkOutput));
-           
+            System.out.println("Desired Output: " + Arrays.toString(dataRow.getDesiredOutput()));
         }
     }
 }

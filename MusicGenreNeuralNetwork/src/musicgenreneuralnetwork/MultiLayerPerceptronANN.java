@@ -43,13 +43,13 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     }
     
     @Override
-    public void learnDataSet(DataSet dataSet, BackPropagation learningRule)
+    public void learnDataSetWithBackP(DataSet dataSet, BackPropagation learningRule)
     {
         multiLayer.learn(dataSet, learningRule);
     }
     
     @Override
-    public void learnDataSet(DataSet dataSet, MomentumBackpropagation learningRule)
+    public void learnDataSetWithMBackP(DataSet dataSet, MomentumBackpropagation learningRule)
     {
        multiLayer.learn(dataSet, learningRule); 
     }

@@ -23,7 +23,7 @@ public abstract class NeuralNetworkANN
     
     public void learnDataSet(DataSet dataSet){};
     
-    public void learnDataSet(DataSet dataSet, BackPropagation learningRule){};
+    public void learnDataSetWithBackP(DataSet dataSet, BackPropagation learningRule){};
     
-    public void learnDataSet(DataSet dataSet, MomentumBackpropagation learningRule){};
+    public void learnDataSetWithMBackP(DataSet dataSet, MomentumBackpropagation learningRule){};
 }

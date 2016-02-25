@@ -67,13 +67,14 @@ public class DataSetTrain extends DataSetANN
     public void getBufferedDataSet(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
     {
         File file = new File(fileName);
-            BufferedDataSet bDS = new BufferedDataSet(file,inputs,outputs,delimiter);
+            
+        BufferedDataSet bDS = new BufferedDataSet(file,inputs,outputs,delimiter);
 
-            for (DataSetRow dataRow : bDS.getRows()) 
-            {
-                train.addRow(dataRow);
-                //bDS.addRow(dataRow);
-            }
+        for (DataSetRow dataRow : bDS.getRows()) 
+        {
+            train.addRow(dataRow);
+            //bDS.addRow(dataRow);
+        }
     }
     /*
     public void setNumberOfInputs(int inputs)

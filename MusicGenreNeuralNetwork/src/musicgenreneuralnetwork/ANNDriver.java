@@ -23,7 +23,7 @@ public class ANNDriver {
         try
         {
             DataSetTrain train = new DataSetTrain(8,4);
-            train.getBufferedDataSet("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
+            train.getBufferedDataSet("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
             
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             
@@ -31,18 +31,21 @@ public class ANNDriver {
             //mlp2.multiLayerPerceptron(TransferFunctionType.LOG, 8, 4, 4);
             
             MomentumBackpropagation mBP = new MomentumBackpropagation();
-            mBP.setMaxIterations(2500);
+            
+            int maxIterations = mBP.getMaxIterations();
+            
+            mBP.setMaxIterations(maxIterations);
             mBP.setMaxError(0.04);
             mBP.setLearningRate(0.2);
             mBP.setMomentum(0.7);
             
-            mlp1.learnDataSet(train.getTrainingDataSet(),mBP);
-            
-            System.out.println("\nCurrent Iteration" + mBP.getCurrentIteration());
+            mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(),mBP);
             
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
-            System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
             
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
@@ -96,7 +99,7 @@ public class ANNDriver {
             mBP.setLearningRate(0.1);
             mBP.setMomentum(0.6);
             
-            mlp2.learnDataSet(train.getTrainingDataSet(),mBP);
+            mlp2.learnDataSetWithMBackP(train.getTrainingDataSet(),mBP);
             
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             

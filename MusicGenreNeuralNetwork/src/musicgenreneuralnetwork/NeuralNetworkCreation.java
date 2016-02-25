@@ -49,7 +49,7 @@ public class NeuralNetworkCreation
             mBP.setMomentum(0.7);
 
             //Learning the Data Set using Momentum BackPropagation 
-            mlp1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
+            mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
             
             //Input / Output (Desired) Values - Train Data Set
             System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
@@ -90,7 +90,7 @@ public class NeuralNetworkCreation
         mBP.setMomentum(0.7);
         
         //Learning the Data Set using Momentum BackPropagation 
-        mlp1.learnDataSet(dS,mBP);
+        mlp1.learnDataSetWithMBackP(dS,mBP);
         
         //Input / Output (Desired) Values - Train Data Set
         System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
@@ -152,7 +152,7 @@ public class NeuralNetworkCreation
             //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
             //mlpANN1.learnDataSet(train.getTrainingDataSet(), bP);
 
-            mlp1.learnDataSet(train.getTrainingDataSet(), mBP);
+            mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(), mBP);
 
             //Input / Output (Desired) Values - Train Data Set
             System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
