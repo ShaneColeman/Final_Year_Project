@@ -95,10 +95,10 @@ public class NeuralNetworkCreation
         }
     }
     
-    public void learnTestANNDataSetFile()
+    public void trainedMLPDSTrainFile()
     {
         //Training Data Set
-        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt", 8, 4, "\t");
+        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
         
         //Multi-Layer Perceptron Artificial Neural Network  - User Defined
         MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
