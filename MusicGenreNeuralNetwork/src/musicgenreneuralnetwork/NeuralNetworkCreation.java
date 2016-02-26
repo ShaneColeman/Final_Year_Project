@@ -95,6 +95,7 @@ public class NeuralNetworkCreation
         }
     }
     
+    //2 - A
     public void trainedMLPDSTrainFile()
     {
         //Training Data Set
@@ -128,7 +129,23 @@ public class NeuralNetworkCreation
         //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
         
         currentDateAndTime();
-    }   
+    }
+    
+    //2 - B
+    public void savedMLPDSTestFile()
+    {
+        //Training Data Set
+        DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
+
+        //Input / Output (Desired) Values - Train Data Set
+        System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
+
+        //Load Saved Neural Netork
+        NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            
+        //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+        testNeuralNetwork(savedMLP,dS);
+    }
     
     public void multiLayerPerceptronCreation() throws FileNotFoundException
     {

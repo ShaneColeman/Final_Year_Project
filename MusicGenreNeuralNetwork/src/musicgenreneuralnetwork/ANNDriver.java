@@ -15,9 +15,6 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class ANNDriver {
 
-    /**
-     */
-
     public void mlp1()
     {
         try
@@ -112,8 +109,6 @@ public class ANNDriver {
             test.testNeuralNetwork(mlp2.getMultiLayerPerceptron(), train.getTrainingDataSet());
            
             //mlp2.saveNeuralNetwork("test_mlp2.nnet");
-            
-       
         }
         catch(Exception e)
         {
@@ -126,7 +121,8 @@ public class ANNDriver {
         NeuralNetworkCreation nNC = new NeuralNetworkCreation();
         //nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
-        nNC.trainedMLPDSTrainFile();
+        //nNC.trainedMLPDSTrainFile();
+        nNC.savedMLPDSTestFile();
         
         /*
         ANNDriver ann = new ANNDriver();
