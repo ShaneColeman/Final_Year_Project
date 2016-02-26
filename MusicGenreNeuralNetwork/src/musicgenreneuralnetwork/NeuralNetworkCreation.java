@@ -260,25 +260,25 @@ public class NeuralNetworkCreation
     {
         dataTrain = new DataSetTrain(8,4);
         
-        dataTrain.addTrainingDataSetRows(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0},
+        dataTrain.addTrainingDataSetRow(new double[]{0.160931174, 0.486666667, 0.2, 0, 0, 0.35, 0.363636364, 0},
                 new double[]{0, 0, 1, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.237854251, 0.733333333, 0.6, 0, 1, 0.025, 0.818181818, 0.428571429},
+        dataTrain.addTrainingDataSetRow(new double[]{0.237854251, 0.733333333, 0.6, 0, 1, 0.025, 0.818181818, 0.428571429},
                 new double[]{0, 0, 0, 1});
-        dataTrain.addTrainingDataSetRows(new double[]{0.208502024, 0.466666667, 0.3, 0, 1, 0.3, 1, 0},
+        dataTrain.addTrainingDataSetRow(new double[]{0.208502024, 0.466666667, 0.3, 0, 1, 0.3, 1, 0},
                 new double[]{0, 0, 1, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
+        dataTrain.addTrainingDataSetRow(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
                 new double[]{0, 0, 1, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
+        dataTrain.addTrainingDataSetRow(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
                 new double[]{0, 1, 0, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714},
+        dataTrain.addTrainingDataSetRow(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714},
                 new double[]{0, 0, 0, 1});
-        dataTrain.addTrainingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
+        dataTrain.addTrainingDataSetRow(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
                 new double[]{0, 0, 0, 1});
-        dataTrain.addTrainingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
+        dataTrain.addTrainingDataSetRow(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
                 new double[]{1,	0, 0, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.259109312, 0.866666667, 0.8, 0, 0, 0.125, 1, 0.857142857}, 
+        dataTrain.addTrainingDataSetRow(new double[]{0.259109312, 0.866666667, 0.8, 0, 0, 0.125, 1, 0.857142857}, 
                 new double[]{1,	0, 0, 0});
-        dataTrain.addTrainingDataSetRows(new double[]{0.197368421, 0.6, 0.2, 0, 1, 0.35, 0, 0}, 
+        dataTrain.addTrainingDataSetRow(new double[]{0.197368421, 0.6, 0.2, 0, 1, 0.35, 0, 0}, 
                 new double[]{0,	0, 1, 0}); 
         
     }
@@ -287,13 +287,13 @@ public class NeuralNetworkCreation
     {
         dataTest = new DataSetTest(8,4);
         
-        dataTest.addTestingDataSetRows(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
+        dataTest.addTestingDataSetRow(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
                 new double[]{0, 1, 0, 0});
-        dataTest.addTestingDataSetRows(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714}, 
+        dataTest.addTestingDataSetRow(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714}, 
                 new double[]{0, 0, 0, 1});
-        dataTest.addTestingDataSetRows(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
+        dataTest.addTestingDataSetRow(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
                 new double[]{0, 0, 0, 1});
-        dataTest.addTestingDataSetRows(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
+        dataTest.addTestingDataSetRow(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
                 new double[]{1,	0, 0, 0});
     }
     
