@@ -14,7 +14,6 @@ import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -30,7 +29,8 @@ public class NeuralNetworkCreation
     private BackPropagation bP;
     private MomentumBackpropagation mBP;
     
-    public void learnTestANNDataSetTrain()
+    //1 - A
+    public void trainedMLPDataSetTrain()
     {
         try
         {
@@ -40,7 +40,6 @@ public class NeuralNetworkCreation
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
-            System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
 
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
@@ -73,6 +72,29 @@ public class NeuralNetworkCreation
         }
     }
     
+    //1 - B
+    public void savedMLPDataSetTest()
+    {
+        try
+        {
+            //Testing Data Set
+            dataSetTestingCreation();
+
+            //Input / Output (Desired) Values - Train Data Set
+            System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
+
+            //Load Saved Neural Netork
+            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            
+            //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            testNeuralNetwork(savedMLP,dataTest.getTestingDataSet());
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
     public void learnTestANNDataSetFile()
     {
         //Training Data Set
@@ -81,7 +103,6 @@ public class NeuralNetworkCreation
         //Multi-Layer Perceptron Artificial Neural Network  - User Defined
         MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
         mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
-        System.out.println("\nMulti-Layer Perceptron A.N.N. created (Sigmoid, 8, 6, 4)");
         
         //Momentum Back Propagation
         mBP = new MomentumBackpropagation();
@@ -174,7 +195,7 @@ public class NeuralNetworkCreation
             //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
 
             //Test Data Set - Method Call
-            //dataSetTestingCreation();
+            dataSetTestingCreation();
 
             //Load Neural Network
             //NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
@@ -268,19 +289,6 @@ public class NeuralNetworkCreation
                 new double[]{0, 0, 1, 0});
         dataTrain.addTrainingDataSetRow(new double[]{0.19534413, 0.6, 0.3, 0, 1, 0.3, 0.727272727, 0},
                 new double[]{0, 0, 1, 0});
-        dataTrain.addTrainingDataSetRow(new double[]{0.301619433, 0.533333333, 0.1, 1, 0, 0.825, 0.272727273, 0},
-                new double[]{0, 1, 0, 0});
-        dataTrain.addTrainingDataSetRow(new double[]{0.303643725, 0.7, 0.4, 0, 0, 0.125, 0.181818182, 0.714285714},
-                new double[]{0, 0, 0, 1});
-        dataTrain.addTrainingDataSetRow(new double[]{0.214574899, 0.8, 0.7, 0, 0, 0.125, 0.727272727,0.571428571}, 
-                new double[]{0, 0, 0, 1});
-        dataTrain.addTrainingDataSetRow(new double[]{0.237854251, 0.866666667, 0.9, 0, 0, 0.05, 0.818181818, 0.857142857}, 
-                new double[]{1,	0, 0, 0});
-        dataTrain.addTrainingDataSetRow(new double[]{0.259109312, 0.866666667, 0.8, 0, 0, 0.125, 1, 0.857142857}, 
-                new double[]{1,	0, 0, 0});
-        dataTrain.addTrainingDataSetRow(new double[]{0.197368421, 0.6, 0.2, 0, 1, 0.35, 0, 0}, 
-                new double[]{0,	0, 1, 0}); 
-        
     }
     
     private void dataSetTestingCreation()

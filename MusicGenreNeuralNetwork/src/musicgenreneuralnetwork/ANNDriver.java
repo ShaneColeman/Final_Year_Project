@@ -123,10 +123,16 @@ public class ANNDriver {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
+        NeuralNetworkCreation nNC = new NeuralNetworkCreation();
+        //nNC.trainedMLPDataSetTrain();
+        nNC.savedMLPDataSetTest();
+        
+        /*
         ANNDriver ann = new ANNDriver();
         
         ann.mlp1();
         //ann.mlp2();
+        */
     }
 
     
