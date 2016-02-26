@@ -86,7 +86,6 @@ public class ANNDriver {
             
             MultiLayerPerceptronANN mlp2 = new MultiLayerPerceptronANN();
             
-            
             mlp2.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
             //mlp2.multiLayerPerceptron(TransferFunctionType.LOG, 8, 4, 4);
             
@@ -125,7 +124,11 @@ public class ANNDriver {
         //nNC.trainedMLPDSTrainFile();
         //nNC.savedMLPDSTestFile();
         
-        nNC.trainedMLPBDSTrainFile();
+        //nNC.trainedMLPBDSTrainFile();
+        nNC.savedMLPBDSTestFile();
+        
+        
+        
         /*
         ANNDriver ann = new ANNDriver();
         

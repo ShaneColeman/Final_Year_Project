@@ -26,7 +26,7 @@ public class NeuralNetworkCreation
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
-    private BackPropagation bP;
+    //private BackPropagation bP;
     private MomentumBackpropagation mBP;
     
     //1 - A
@@ -80,7 +80,7 @@ public class NeuralNetworkCreation
             //Testing Data Set
             dataSetTestingCreation();
 
-            //Input / Output (Desired) Values - Train Data Set
+            //Input / Output (Desired) Values - Test Data Set
             System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
 
             //Load Saved Neural Netork
@@ -148,10 +148,10 @@ public class NeuralNetworkCreation
             //Training Data Set
             DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
 
-            //Input / Output (Desired) Values - Train Data Set
+            //Input / Output (Desired) Values - Test Data Set
             System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
 
-            //Load Saved Neural Netork
+            //Load Saved Neural Network
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
 
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
@@ -238,9 +238,14 @@ public class NeuralNetworkCreation
                 test.addDataSetRow(dataRow);
                 //bDS.addRow(dataRow);
             }
+            
+            //Input / Output (Desired) Values - Train Data Set
+            System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
+            //Load Saved Neural Network
             NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
 
+            //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             testNeuralNetwork(load,test.getTestingDataSet());
             
             currentDateAndTime();
