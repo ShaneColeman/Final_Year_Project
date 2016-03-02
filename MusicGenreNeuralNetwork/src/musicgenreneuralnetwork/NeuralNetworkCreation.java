@@ -14,6 +14,7 @@ import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
+import org.neuroph.core.transfer.Sigmoid;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -26,8 +27,8 @@ public class NeuralNetworkCreation
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
-    //private BackPropagation bP;
-    private MomentumBackpropagation mBP;
+    private BackPropagation bP;
+    MomentumBackpropagation mBP;
     
     //1 - A
     public void trainedMLPDataSetTrain()
@@ -37,6 +38,7 @@ public class NeuralNetworkCreation
             //Training Data Set
             dataSetTrainingCreation();
             
+            //Set Data Set Attribute Column Names
             setColumnNames(dataTrain.getTrainingDataSet());
             System.out.println(Arrays.toString(dataTrain.getTrainingColumnNames()));
 
@@ -44,23 +46,31 @@ public class NeuralNetworkCreation
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
 
+            //BackPropagation
+            bP = new BackPropagation();
+            bP.setMaxError(0.04);
+            bP.setLearningRate(0.2);
+
             //Momentum Back Propagation
-            mBP = new MomentumBackpropagation();
-            mBP.setMaxError(0.04);
-            mBP.setLearningRate(0.2);
-            mBP.setMomentum(0.7);
+            //mBP = new MomentumBackpropagation();
+            //mBP.setMaxError(0.04);
+            //mBP.setLearningRate(0.2);
+            //mBP.setMomentum(0.7);
 
             //Learning the Data Set using Momentum BackPropagation 
-            mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
+            mlp1.learnDataSetWithBackP(dataTrain.getTrainingDataSet(),bP);
+            //mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
             
             //Input / Output (Desired) Values - Train Data Set
             //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
             
-            //Max Error - Momentum BackPropagation
-            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            //Max Error - BackPropagation / Momentum BackPropagation
+            System.out.println("\nMax Error: " + bP.getTotalNetworkError());
+            //System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
-            //Current Iteration
-            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            //Current Iteration - BackPropagation / Momentum BackPropagation
+            System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
+            //System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
@@ -86,6 +96,7 @@ public class NeuralNetworkCreation
             //Testing Data Set
             dataSetTestingCreation();
             
+            //Set Data Set Attribute Column Names
             setColumnNames(dataTest.getTestingDataSet());
             System.out.println(Arrays.toString(dataTest.getTestingColumnNames()));
 
@@ -95,6 +106,18 @@ public class NeuralNetworkCreation
             //Load Saved Neural Network
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            
+            //Test Code - Can Remove
+            mBP = new MomentumBackpropagation();
+            mBP.setMaxIterations(150);
+            mBP.setMaxError(0.02);
+            mBP.setLearningRate(0.7);
+            mBP.setMomentum(0.5);
+            savedMLP.learn(dataTest.getTestingDataSet(), mBP);
+            //Max Error - Momentum BackPropagation
+            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            //Current Iteration
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
@@ -116,6 +139,7 @@ public class NeuralNetworkCreation
             //Training Data Set
             DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
 
+            //Set Data Set Attribute Column Names
             setColumnNames(dS);
             System.out.println(Arrays.toString(dS.getColumnNames()));
             
@@ -165,6 +189,7 @@ public class NeuralNetworkCreation
             //Training Data Set
             DataSet dS = DataSetTest.testingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
 
+            //Set Data Set Attribute Column Names
             setColumnNames(dS);
             System.out.println(Arrays.toString(dS.getColumnNames()));
             
@@ -198,6 +223,7 @@ public class NeuralNetworkCreation
             File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
+            //Set Data Set Attribute Column Names
             setColumnNames(train.getTrainingDataSet(),bDS);
             System.out.println(Arrays.toString(train.getTrainingColumnNames()));
             
@@ -264,6 +290,7 @@ public class NeuralNetworkCreation
                 test.addDataSetRow(dataRow);
             }
             
+            //Set Data Set Attribute Column Names
             setColumnNames(test.getTestingDataSet(),bDS);
             System.out.println(Arrays.toString(test.getTestingColumnNames()));
             
@@ -294,11 +321,6 @@ public class NeuralNetworkCreation
     {
         try
         {
-            //BackPropagation
-            //bP = new BackPropagation();
-            //bP.setMaxError(0.04);
-            //bP.setLearningRate(0.2);
-
             //Learning the Data Set - No Learning Rule
             
             //Learning the Data Set using BackPropagation 

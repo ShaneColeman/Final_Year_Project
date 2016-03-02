@@ -7,7 +7,6 @@ package musicgenreneuralnetwork;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.List;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;

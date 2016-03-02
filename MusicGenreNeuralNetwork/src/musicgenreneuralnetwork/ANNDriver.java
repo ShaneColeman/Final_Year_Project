@@ -53,7 +53,7 @@ public class ANNDriver {
            
             mlp1.saveNeuralNetwork("test_mlp1.nnet");
             
-            
+            /////////////////////////////////////////
             //NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
             
             /*
@@ -105,7 +105,7 @@ public class ANNDriver {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
-        //NeuralNetworkCreation nNC = new NeuralNetworkCreation();
+        NeuralNetworkCreation nNC = new NeuralNetworkCreation();
         //nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
         
@@ -113,11 +113,11 @@ public class ANNDriver {
         //nNC.savedMLPDSTestFile();
         
         //nNC.trainedMLPBDSTrainFile();
-        //nNC.savedMLPBDSTestFile();
+        nNC.savedMLPBDSTestFile();
         
-        ANNDriver ann = new ANNDriver();
+        //ANNDriver ann = new ANNDriver();
         //ann.trainedNeuralNetwork();
-        ann.savedNeuralNetwork();
+        //ann.savedNeuralNetwork();
         
     }
 
