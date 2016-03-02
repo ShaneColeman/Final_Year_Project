@@ -6,6 +6,7 @@
 package musicgenreneuralnetwork;
 
 import java.io.FileNotFoundException;
+import org.neuroph.core.NeuralNetwork;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
 
@@ -15,12 +16,12 @@ import org.neuroph.util.TransferFunctionType;
  */
 public class ANNDriver {
 
-    public void mlp1()
+    public void trainedNeuralNetwork()
     {
         try
         {
-            DataSetTrain train = new DataSetTrain(8,4);
-            train.getTrainingBDS("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
+            DataSetTrain trainDS = new DataSetTrain(8,4);
+            trainDS.getTrainingBDS("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
             
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             
@@ -36,7 +37,7 @@ public class ANNDriver {
             mBP.setLearningRate(0.2);
             mBP.setMomentum(0.7);
             
-            mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(),mBP);
+            mlp1.learnDataSetWithMBackP(trainDS.getTrainingDataSet(),mBP);
             
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
@@ -48,7 +49,7 @@ public class ANNDriver {
             System.out.println("\nTesting Trained Neural Network");
             TestNeuralNetwork test = new TestNeuralNetwork();
             
-            test.testNeuralNetwork(mlp1.getMultiLayerPerceptron(), train.getTrainingDataSet());
+            test.testNeuralNetwork(mlp1.getMultiLayerPerceptron(), trainDS.getTrainingDataSet());
            
             mlp1.saveNeuralNetwork("test_mlp1.nnet");
             
@@ -77,37 +78,24 @@ public class ANNDriver {
         }
     }
     
-    public void mlp2()
+    public void savedNeuralNetwork()
     {
         try
         {
-            DataSetTrain train = new DataSetTrain(8,4);
-            train.getTrainingBDS("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
+            DataSetTest testDS = new DataSetTest(8,4);
+            testDS.getTestingBDS("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
             
-            MultiLayerPerceptronANN mlp2 = new MultiLayerPerceptronANN();
+            //Load Saved Neural Network
+            System.out.println("\nLoading Saved Neural Network");
+            NeuralNetwork load = NeuralNetwork.createFromFile("test_mlp1.nnet");
             
-            mlp2.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
-            //mlp2.multiLayerPerceptron(TransferFunctionType.LOG, 8, 4, 4);
-            
-            MomentumBackpropagation mBP = new MomentumBackpropagation();
-            mBP.setMaxIterations(2500);
-            mBP.setMaxError(0.07);
-            mBP.setLearningRate(0.1);
-            mBP.setMomentum(0.6);
-            
-            mlp2.learnDataSetWithMBackP(train.getTrainingDataSet(),mBP);
-            
-            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
-            
-            System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + testDS.getTestingDataSet().getRows());
             
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
             TestNeuralNetwork test = new TestNeuralNetwork();
             
-            test.testNeuralNetwork(mlp2.getMultiLayerPerceptron(), train.getTrainingDataSet());
-           
-            //mlp2.saveNeuralNetwork("test_mlp2.nnet");
+            test.testNeuralNetwork(load, testDS.getTestingDataSet());
         }
         catch(Exception e)
         {
@@ -127,12 +115,9 @@ public class ANNDriver {
         //nNC.trainedMLPBDSTrainFile();
         //nNC.savedMLPBDSTestFile();
         
-        
-        
         ANNDriver ann = new ANNDriver();
-        
-        //ann.mlp1();
-        ann.mlp2();
+        //ann.trainedNeuralNetwork();
+        ann.savedNeuralNetwork();
         
     }
 
