@@ -67,8 +67,8 @@ public class NeuralNetworkCreation
             testNeuralNetwork(mlp1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
             
             //Save Neural Network
-            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
             currentDateAndTime();
         }
@@ -116,6 +116,9 @@ public class NeuralNetworkCreation
             //Training Data Set
             DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
 
+            setColumnNames(dS);
+            System.out.println(Arrays.toString(dS.getColumnNames()));
+            
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
@@ -143,8 +146,8 @@ public class NeuralNetworkCreation
             testNeuralNetwork(mlp1.getMultiLayerPerceptron(),dS);
 
             //Save Neural Network
-            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
 
             currentDateAndTime();
         }
@@ -160,8 +163,11 @@ public class NeuralNetworkCreation
         try
         {
             //Training Data Set
-            DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
+            DataSet dS = DataSetTest.testingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
 
+            setColumnNames(dS);
+            System.out.println(Arrays.toString(dS.getColumnNames()));
+            
             //Input / Output (Desired) Values - Test Data Set
             //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
 
@@ -193,8 +199,8 @@ public class NeuralNetworkCreation
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
             setColumnNames(train.getTrainingDataSet(),bDS);
-            System.out.println(Arrays.toString(bDS.getColumnNames()));
-
+            System.out.println(Arrays.toString(train.getTrainingColumnNames()));
+            
             for (DataSetRow dataRow : bDS.getRows()) 
             {
                 train.addDataSetRow(dataRow);
@@ -230,8 +236,8 @@ public class NeuralNetworkCreation
             testNeuralNetwork(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
             
             //Save Neural Network
-            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
             currentDateAndTime();
         }
@@ -251,15 +257,15 @@ public class NeuralNetworkCreation
             File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
 
-            setColumnNames(test.getTestingDataSet(),bDS);
-            System.out.println(Arrays.toString(bDS.getColumnNames()));
-
             Iterator<DataSetRow> it = bDS.getRows().iterator();
             while(it.hasNext())
             {
                 DataSetRow dataRow = it.next();
                 test.addDataSetRow(dataRow);
             }
+            
+            setColumnNames(test.getTestingDataSet(),bDS);
+            System.out.println(Arrays.toString(test.getTestingColumnNames()));
             
             //Place within for-loop
             //bDS.addRow(dataRow);
@@ -368,26 +374,26 @@ public class NeuralNetworkCreation
         dataSet.setColumnNames(columnNames);
     }
     
-    public void setColumnNames(DataSet daSUserDefined, DataSet dS)
+    public void setColumnNames(DataSet dataSetUserDefined, DataSet dS)
     {
-        final int COLUMN_SIZE = (daSUserDefined.getInputSize() + daSUserDefined.getOutputSize());
+        final int COLUMN_SIZE = (dataSetUserDefined.getInputSize() + dataSetUserDefined.getOutputSize());
 
-            String[] columnNames = new String[COLUMN_SIZE];
+        String[] columnNames = new String[COLUMN_SIZE];
             
-            columnNames[0] = "Author and Song Duration";
-            columnNames[1] = "Tempo (Beats per Minute)";
-            columnNames[2] = "Root Mean Square (Amplitude)";
-            columnNames[3] = "Sampling Frequency (kHz)";
-            columnNames[4] = "Sampling Rate (b)";
-            columnNames[5] = "Dynamic Range";
-            columnNames[6] = "Tonality";
-            columnNames[7] = "Number of Digital Errors";
-            columnNames[8] = "1 0 0 0 - Rock";
-            columnNames[9] = "0 1 0 0 - Classical";
-            columnNames[10] = "0 0 1 0 - Jazz";
-            columnNames[11] = "0 0 0 1 - Folk";
+        columnNames[0] = "Author and Song Duration";
+        columnNames[1] = "Tempo (Beats per Minute)";
+        columnNames[2] = "Root Mean Square (Amplitude)";
+        columnNames[3] = "Sampling Frequency (kHz)";
+        columnNames[4] = "Sampling Rate (b)";
+        columnNames[5] = "Dynamic Range";
+        columnNames[6] = "Tonality";
+        columnNames[7] = "Number of Digital Errors";
+        columnNames[8] = "1 0 0 0 - Rock";
+        columnNames[9] = "0 1 0 0 - Classical";
+        columnNames[10] = "0 0 1 0 - Jazz";
+        columnNames[11] = "0 0 0 1 - Folk";
             
-            dS.setColumnNames(columnNames);
+        dataSetUserDefined.setColumnNames(columnNames);
     }
     
     public void dataSetTrainingCreation()

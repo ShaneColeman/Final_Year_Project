@@ -5,6 +5,9 @@
  */
 package musicgenreneuralnetwork;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 
@@ -31,14 +34,41 @@ public class DataSetTest extends DataSetANN
         test.addRow(new DataSetRow(inputs,outputs));
     }
     
-    
     @Override
     public void addDataSetRow(DataSetRow dataSetRow)
     {
         test.addRow(dataSetRow);
     }
     
+    public static DataSet testingSetFromFile(String fileName, int inputs, int outputs, String delimiter)
+    {
+        return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
+    }
     
+    public void getTestingBDS(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
+    {
+        File file = new File(fileName);
+            
+        BufferedDataSet bDS = new BufferedDataSet(file,inputs,outputs,delimiter);
+
+        for (DataSetRow dataRow : bDS.getRows()) 
+        {
+            test.addRow(dataRow);
+            //bDS.addRow(dataRow);
+        }
+    }
+    
+    public String[] getTestingColumnNames()
+    {
+        return test.getColumnNames();
+    }
+    
+    public DataSet getTestingDataSet()
+    {
+        return test;
+    }
+    
+    //Unused Code
     /*
     @Override
     public void setNumberOfInputs(int inputs)
@@ -64,15 +94,4 @@ public class DataSetTest extends DataSetANN
         return outputs;
     }
     */
-    
-    public String[] getTestingColumnNames()
-    {
-        return test.getColumnNames();
-    }
-    
-    public DataSet getTestingDataSet()
-    {
-        return test;
-    }
-    
 }

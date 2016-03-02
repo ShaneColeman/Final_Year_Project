@@ -44,13 +44,11 @@ public class DataSetTrain extends DataSetANN
         train = new DataSet(inputs, outputs);
     }
 
-    
     @Override
     public void addTrainingDataSetRow(double[] inputs, double[] outputs)
     {
         train.addRow(new DataSetRow(inputs,outputs));
     }
-    
     
     @Override
     public void addDataSetRow(DataSetRow dataSetRow)
@@ -58,13 +56,12 @@ public class DataSetTrain extends DataSetANN
         train.addRow(dataSetRow);
     }
     
-    
     public static DataSet trainingSetFromFile(String fileName, int inputs, int outputs, String delimiter)
     {
         return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
     }
     
-    public void getBufferedDataSet(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
+    public void getTrainingBDS(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
     {
         File file = new File(fileName);
             
@@ -76,6 +73,18 @@ public class DataSetTrain extends DataSetANN
             //bDS.addRow(dataRow);
         }
     }
+    
+    public String[] getTrainingColumnNames()
+    {
+        return train.getColumnNames();
+    }
+    
+    public DataSet getTrainingDataSet()
+    {
+        return train;
+    }
+    
+    //Unused Code
     /*
     public void setNumberOfInputs(int inputs)
     {
@@ -101,18 +110,4 @@ public class DataSetTrain extends DataSetANN
     }
     */
 
-    public DataSet getTrainingDataSet()
-    {
-        return train;
-    }
-    
-    public String[] getTrainingColumnNames()
-    {
-        return train.getColumnNames();
-    }
-    
-    public List<DataSetRow> getDataSetRows()
-    {
-        return train.getRows();
-    }
 }

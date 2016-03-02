@@ -20,7 +20,7 @@ public class ANNDriver {
         try
         {
             DataSetTrain train = new DataSetTrain(8,4);
-            train.getBufferedDataSet("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
+            train.getTrainingBDS("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
             
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             
@@ -50,7 +50,7 @@ public class ANNDriver {
             
             test.testNeuralNetwork(mlp1.getMultiLayerPerceptron(), train.getTrainingDataSet());
            
-            //mlp1.saveNeuralNetwork("test_mlp1.nnet");
+            mlp1.saveNeuralNetwork("test_mlp1.nnet");
             
             
             //NeuralNetworkCreation neuralNetwork = new NeuralNetworkCreation();
@@ -82,7 +82,7 @@ public class ANNDriver {
         try
         {
             DataSetTrain train = new DataSetTrain(8,4);
-            train.getBufferedDataSet("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
+            train.getTrainingBDS("C:\\Users\\Windows\\Desktop\\TrainingDataSet11.txt", 8, 4, "\t");
             
             MultiLayerPerceptronANN mlp2 = new MultiLayerPerceptronANN();
             
@@ -117,7 +117,7 @@ public class ANNDriver {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
-        NeuralNetworkCreation nNC = new NeuralNetworkCreation();
+        //NeuralNetworkCreation nNC = new NeuralNetworkCreation();
         //nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
         
@@ -129,12 +129,11 @@ public class ANNDriver {
         
         
         
-        /*
         ANNDriver ann = new ANNDriver();
         
-        ann.mlp1();
-        //ann.mlp2();
-        */
+        //ann.mlp1();
+        ann.mlp2();
+        
     }
 
     
