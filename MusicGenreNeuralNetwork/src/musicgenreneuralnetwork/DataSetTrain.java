@@ -106,6 +106,11 @@ public class DataSetTrain extends DataSetANN
         return train;
     }
     
+    public String[] getTrainingColumnNames()
+    {
+        return train.getColumnNames();
+    }
+    
     public List<DataSetRow> getDataSetRows()
     {
         return train.getRows();

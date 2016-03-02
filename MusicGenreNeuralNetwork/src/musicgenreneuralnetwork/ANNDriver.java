@@ -119,7 +119,7 @@ public class ANNDriver {
     {
         NeuralNetworkCreation nNC = new NeuralNetworkCreation();
         //nNC.trainedMLPDataSetTrain();
-        nNC.savedMLPDataSetTest();
+        //nNC.savedMLPDataSetTest();
         
         //nNC.trainedMLPDSTrainFile();
         //nNC.savedMLPDSTestFile();

@@ -36,6 +36,9 @@ public class NeuralNetworkCreation
         {
             //Training Data Set
             dataSetTrainingCreation();
+            
+            setColumnNames(dataTrain.getTrainingDataSet());
+            System.out.println(Arrays.toString(dataTrain.getTrainingColumnNames()));
 
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
@@ -51,10 +54,13 @@ public class NeuralNetworkCreation
             mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
             
             //Input / Output (Desired) Values - Train Data Set
-            System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
             
             //Max Error - Momentum BackPropagation
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            
+            //Current Iteration
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
@@ -79,14 +85,19 @@ public class NeuralNetworkCreation
         {
             //Testing Data Set
             dataSetTestingCreation();
+            
+            setColumnNames(dataTest.getTestingDataSet());
+            System.out.println(Arrays.toString(dataTest.getTestingColumnNames()));
 
             //Input / Output (Desired) Values - Test Data Set
-            System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
+            //System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
 
-            //Load Saved Neural Netork
+            //Load Saved Neural Network
+            System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Saved Neural Network");
             testNeuralNetwork(savedMLP,dataTest.getTestingDataSet());
             
             currentDateAndTime();
@@ -119,10 +130,13 @@ public class NeuralNetworkCreation
             mlp1.learnDataSetWithMBackP(dS,mBP);
 
             //Input / Output (Desired) Values - Train Data Set
-            System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + dS.getRows());
 
             //Max Error - Momentum BackPropagation
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            
+            //Current Iteration
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
 
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
@@ -149,12 +163,14 @@ public class NeuralNetworkCreation
             DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
 
             //Input / Output (Desired) Values - Test Data Set
-            System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
+            //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
 
             //Load Saved Neural Network
+            System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
 
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Saved Neural Network");
             testNeuralNetwork(savedMLP,dS);
             
             currentDateAndTime();
@@ -175,12 +191,17 @@ public class NeuralNetworkCreation
 
             File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            
+            setColumnNames(train.getTrainingDataSet(),bDS);
+            System.out.println(Arrays.toString(bDS.getColumnNames()));
 
             for (DataSetRow dataRow : bDS.getRows()) 
             {
                 train.addDataSetRow(dataRow);
-                //bDS.addRow(dataRow);
             }
+            
+            //Place within for-loop
+            //bDS.addRow(dataRow);
             
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
@@ -196,10 +217,13 @@ public class NeuralNetworkCreation
             mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(), mBP);
             
             //Input / Output (Desired) Values - Train Data Set
-            System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
             
             //Max Error - BackPropagation
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            
+            //Current Iteration
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
 
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
@@ -228,7 +252,6 @@ public class NeuralNetworkCreation
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
 
             setColumnNames(test.getTestingDataSet(),bDS);
-
             System.out.println(Arrays.toString(bDS.getColumnNames()));
 
             Iterator<DataSetRow> it = bDS.getRows().iterator();
@@ -236,16 +259,20 @@ public class NeuralNetworkCreation
             {
                 DataSetRow dataRow = it.next();
                 test.addDataSetRow(dataRow);
-                //bDS.addRow(dataRow);
             }
             
+            //Place within for-loop
+            //bDS.addRow(dataRow);
+            
             //Input / Output (Desired) Values - Train Data Set
-            System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
+            //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
             //Load Saved Neural Network
+            System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-
+            
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Saved Neural Network");
             testNeuralNetwork(load,test.getTestingDataSet());
             
             currentDateAndTime();
@@ -319,9 +346,31 @@ public class NeuralNetworkCreation
         System.out.println("\nDate and Time: " + date.toString());
     }
     
-    public void setColumnNames(DataSet dataSet, BufferedDataSet bufferedDataSet)
+    public void setColumnNames(DataSet dataSet)
     {
         final int COLUMN_SIZE = (dataSet.getInputSize() + dataSet.getOutputSize());
+
+        String[] columnNames = new String[COLUMN_SIZE];
+            
+        columnNames[0] = "Author and Song Duration";
+        columnNames[1] = "Tempo (Beats per Minute)";
+        columnNames[2] = "Root Mean Square (Amplitude)";
+        columnNames[3] = "Sampling Frequency (kHz)";
+        columnNames[4] = "Sampling Rate (b)";
+        columnNames[5] = "Dynamic Range";
+        columnNames[6] = "Tonality";
+        columnNames[7] = "Number of Digital Errors";
+        columnNames[8] = "1 0 0 0 - Rock";
+        columnNames[9] = "0 1 0 0 - Classical";
+        columnNames[10] = "0 0 1 0 - Jazz";
+        columnNames[11] = "0 0 0 1 - Folk";
+            
+        dataSet.setColumnNames(columnNames);
+    }
+    
+    public void setColumnNames(DataSet daSUserDefined, DataSet dS)
+    {
+        final int COLUMN_SIZE = (daSUserDefined.getInputSize() + daSUserDefined.getOutputSize());
 
             String[] columnNames = new String[COLUMN_SIZE];
             
@@ -338,7 +387,7 @@ public class NeuralNetworkCreation
             columnNames[10] = "0 0 1 0 - Jazz";
             columnNames[11] = "0 0 0 1 - Folk";
             
-            bufferedDataSet.setColumnNames(columnNames);
+            dS.setColumnNames(columnNames);
     }
     
     public void dataSetTrainingCreation()
@@ -382,7 +431,7 @@ public class NeuralNetworkCreation
             networkOutput = nnet.getOutput();
             System.out.println("\nInput: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(networkOutput));
-           
+            System.out.println("Desired Output: " + Arrays.toString(dataRow.getDesiredOutput()));
         }
     }
 }

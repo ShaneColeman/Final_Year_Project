@@ -65,6 +65,11 @@ public class DataSetTest extends DataSetANN
     }
     */
     
+    public String[] getTestingColumnNames()
+    {
+        return test.getColumnNames();
+    }
+    
     public DataSet getTestingDataSet()
     {
         return test;
