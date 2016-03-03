@@ -5,6 +5,7 @@
  */
 package musicgenreneuralnetwork;
 
+import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 
 /**

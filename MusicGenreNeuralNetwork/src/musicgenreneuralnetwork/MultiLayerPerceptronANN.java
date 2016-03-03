@@ -54,11 +54,13 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
        multiLayer.learn(dataSet, learningRule); 
     }
     
+    /*
     //Remove if unsuccessful
     public void learnDataSet(BufferedDataSet dataSet, MomentumBackpropagation learningRule)
     {
        multiLayer.learn(dataSet, learningRule); 
     }
+    */
     
     public MultiLayerPerceptron getMultiLayerPerceptron()
     {
