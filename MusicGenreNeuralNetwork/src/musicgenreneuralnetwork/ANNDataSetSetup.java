@@ -26,7 +26,8 @@ public class ANNDataSetSetup
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
-    //private BackPropagation bP;
+    
+    private BackPropagation bP;
     private MomentumBackpropagation mBP;
     
     //1 - A
@@ -46,34 +47,40 @@ public class ANNDataSetSetup
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
 
             //BackPropagation
-            //bP = new BackPropagation();
-            //bP.setMaxError(0.04);
-            //bP.setLearningRate(0.2);
+            bP = new BackPropagation();
+            bP.setMaxError(0.04);
+            bP.setLearningRate(0.2);
 
-            //Momentum Back Propagation
-            //mBP = new MomentumBackpropagation();
-            //mBP.setMaxError(0.04);
-            //mBP.setLearningRate(0.2);
-            //mBP.setMomentum(0.7);
+            //Momentum BackPropagation
+            mBP = new MomentumBackpropagation();
+            mBP.setMaxError(0.04);
+            mBP.setLearningRate(0.2);
+            mBP.setMomentum(0.7);
 
-            //Learning the Data Set using Momentum BackPropagation 
-            //mlp1.learnDataSetWithBackP(dataTrain.getTrainingDataSet(),bP);
+            //Learning the Data Set using BackPropagation Learning Rule Algorithm
+            mlp1.learnDataSetWithBackP(dataTrain.getTrainingDataSet(),bP);
+            
+            //Learning the Data Set using Momentum BackPropagation Learning Rule Algorithm
             mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
             
             //Input / Output (Desired) Values - Train Data Set
             //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
             
-            //Max Error - BackPropagation / Momentum BackPropagation
-            //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
-            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
-            
-            //Current Iteration - BackPropagation / Momentum BackPropagation
-            //System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
-            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
-            
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
-            testNeuralNetwork(mlp1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
+            testANN(mlp1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
+            
+            //Current Iteration - BackPropagation
+            System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
+            
+            //Current Iteration - Momentum BackPropagation
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            
+            //Max Error - BackPropagation 
+            System.out.println("\nMax Error: " + bP.getTotalNetworkError());
+            
+            //Max Error - Momentum BackPropagation
+            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
             //Save Neural Network
             mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -120,7 +127,7 @@ public class ANNDataSetSetup
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
-            testNeuralNetwork(savedMLP,dataTest.getTestingDataSet());
+            testANN(savedMLP,dataTest.getTestingDataSet());
             
             currentDateAndTime();
         }
@@ -166,7 +173,7 @@ public class ANNDataSetSetup
 
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
-            testNeuralNetwork(mlp1.getMultiLayerPerceptron(),dS);
+            testANN(mlp1.getMultiLayerPerceptron(),dS);
 
             //Save Neural Network
             mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -201,7 +208,7 @@ public class ANNDataSetSetup
 
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
-            testNeuralNetwork(savedMLP,dS);
+            testANN(savedMLP,dS);
             
             currentDateAndTime();
         }
@@ -255,7 +262,7 @@ public class ANNDataSetSetup
 
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
-            testNeuralNetwork(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+            testANN(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
             
             //Max Error - BackPropagation
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
@@ -306,7 +313,7 @@ public class ANNDataSetSetup
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
-            testNeuralNetwork(savedMLP,test.getTestingDataSet());
+            testANN(savedMLP,test.getTestingDataSet());
             
             currentDateAndTime();
         }
@@ -454,19 +461,19 @@ public class ANNDataSetSetup
                 new double[]{1,	0, 0, 0});
     }
     
-    public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
+    public void testANN(NeuralNetwork aNN, DataSet dataSet)
     {
-        Iterator<DataSetRow> it = testDataSet.getRows().iterator();
-        double[] networkOutput;
+        Iterator<DataSetRow> it = dataSet.getRows().iterator();
+        double[] aNNOutput;
         
         while(it.hasNext())
         {
             DataSetRow dataRow = it.next();
-            nnet.setInput(dataRow.getInput());
-            nnet.calculate();
-            networkOutput = nnet.getOutput();
+            aNN.setInput(dataRow.getInput());
+            aNN.calculate();
+            aNNOutput = aNN.getOutput();
             System.out.println("\nInput: " + Arrays.toString(dataRow.getInput()));
-            System.out.println("Output: " + Arrays.toString(networkOutput));
+            System.out.println("Output: " + Arrays.toString(aNNOutput));
             System.out.println("Desired Output: " + Arrays.toString(dataRow.getDesiredOutput()));
         }
     }
