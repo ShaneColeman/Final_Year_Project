@@ -71,20 +71,20 @@ public class ANNDataSetSetup
             testANN(mlp1.getMultiLayerPerceptron(),dataTrain.getTrainingDataSet());
             
             //Current Iteration - BackPropagation
-            System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
+            //System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
             
             //Current Iteration - Momentum BackPropagation
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Max Error - BackPropagation 
-            System.out.println("\nMax Error: " + bP.getTotalNetworkError());
+            //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
             
             //Max Error - Momentum BackPropagation
             System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
             //Save Neural Network
-            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
             currentDateAndTime();
         }

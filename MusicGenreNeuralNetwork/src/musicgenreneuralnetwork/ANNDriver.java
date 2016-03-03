@@ -6,10 +6,6 @@
 package musicgenreneuralnetwork;
 
 import java.io.FileNotFoundException;
-import org.neuroph.core.NeuralNetwork;
-import org.neuroph.core.data.DataSet;
-import org.neuroph.nnet.learning.MomentumBackpropagation;
-import org.neuroph.util.TransferFunctionType;
 
 /**
  *
@@ -21,13 +17,13 @@ public class ANNDriver {
     {
         ANNDataSetSetup nNC = new ANNDataSetSetup();
         
-        //nNC.trainedMLPDataSetTrain();
+        nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
         
         //nNC.trainedMLPDSTrainFile();
         //nNC.savedMLPDSTestFile();
         
-        nNC.trainedMLPBDSTrainFile();
+        //nNC.trainedMLPBDSTrainFile();
         //nNC.savedMLPBDSTestFile();
     }
 }
