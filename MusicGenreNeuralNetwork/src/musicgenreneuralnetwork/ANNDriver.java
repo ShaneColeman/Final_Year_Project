@@ -19,7 +19,8 @@ public class ANNDriver {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
-        NeuralNetworkCreation nNC = new NeuralNetworkCreation();
+        ANNDataSetSetup nNC = new ANNDataSetSetup();
+        
         //nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
         

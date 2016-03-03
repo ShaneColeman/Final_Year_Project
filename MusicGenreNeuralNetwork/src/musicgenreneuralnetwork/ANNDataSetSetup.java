@@ -14,7 +14,6 @@ import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
-import org.neuroph.core.transfer.Sigmoid;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -23,7 +22,7 @@ import org.neuroph.util.TransferFunctionType;
  *
  * @author Windows
  */
-public class NeuralNetworkCreation 
+public class ANNDataSetSetup 
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
