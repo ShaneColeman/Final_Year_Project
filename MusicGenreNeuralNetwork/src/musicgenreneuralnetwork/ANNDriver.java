@@ -113,7 +113,7 @@ public class ANNDriver {
         //nNC.savedMLPDSTestFile();
         
         nNC.trainedMLPBDSTrainFile();
-        //nNC.savedMLPBDSTestFile();
+        nNC.savedMLPBDSTestFile();
         
         //ANNDriver ann = new ANNDriver();
         //ann.trainedNeuralNetwork();

@@ -27,8 +27,8 @@ public class NeuralNetworkCreation
 {
     private DataSetTrain dataTrain;
     private DataSetTest dataTest;
-    private BackPropagation bP;
-    MomentumBackpropagation mBP;
+    //private BackPropagation bP;
+    private MomentumBackpropagation mBP;
     
     //1 - A
     public void trainedMLPDataSetTrain()
@@ -47,9 +47,9 @@ public class NeuralNetworkCreation
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
 
             //BackPropagation
-            bP = new BackPropagation();
-            bP.setMaxError(0.04);
-            bP.setLearningRate(0.2);
+            //bP = new BackPropagation();
+            //bP.setMaxError(0.04);
+            //bP.setLearningRate(0.2);
 
             //Momentum Back Propagation
             //mBP = new MomentumBackpropagation();
@@ -58,19 +58,19 @@ public class NeuralNetworkCreation
             //mBP.setMomentum(0.7);
 
             //Learning the Data Set using Momentum BackPropagation 
-            mlp1.learnDataSetWithBackP(dataTrain.getTrainingDataSet(),bP);
-            //mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
+            //mlp1.learnDataSetWithBackP(dataTrain.getTrainingDataSet(),bP);
+            mlp1.learnDataSetWithMBackP(dataTrain.getTrainingDataSet(),mBP);
             
             //Input / Output (Desired) Values - Train Data Set
             //System.out.println("\nTraining - Input / Output Values (Desired): " + dataTrain.getTrainingDataSet().getRows());
             
             //Max Error - BackPropagation / Momentum BackPropagation
-            System.out.println("\nMax Error: " + bP.getTotalNetworkError());
-            //System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
+            //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
+            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
             //Current Iteration - BackPropagation / Momentum BackPropagation
-            System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
-            //System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            //System.out.println("\nCurrent Iteration: " + bP.getCurrentIteration());
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
@@ -106,7 +106,7 @@ public class NeuralNetworkCreation
             //Load Saved Neural Network
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-            
+
             //Test Code - Can Remove
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(150);
@@ -251,15 +251,15 @@ public class NeuralNetworkCreation
             //Input / Output (Desired) Values - Train Data Set
             //System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
             
-            //Max Error - BackPropagation
-            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
-            
             //Current Iteration
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
 
             //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Trained Neural Network");
             testNeuralNetwork(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+            
+            //Max Error - BackPropagation
+            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
             
             //Save Neural Network
             mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
@@ -280,7 +280,7 @@ public class NeuralNetworkCreation
         {
             DataSetTest test = new DataSetTest(8,4);
 
-            File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet.txt");
+            File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
 
             Iterator<DataSetRow> it = bDS.getRows().iterator();
@@ -302,11 +302,12 @@ public class NeuralNetworkCreation
 
             //Load Saved Neural Network
             System.out.println("\nLoading Saved Neural Network");
-            NeuralNetwork load = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            neuralNetworkProperties(savedMLP);
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
-            testNeuralNetwork(load,test.getTestingDataSet());
+            testNeuralNetwork(savedMLP,test.getTestingDataSet());
             
             currentDateAndTime();
         }
@@ -371,7 +372,7 @@ public class NeuralNetworkCreation
     {
         //Date and Time
         Date date = new Date();
-        System.out.println("\nDate and Time: " + date.toString());
+        System.out.println("\nDate and Time: " + date.toString() + "\n");
     }
     
     public void setColumnNames(DataSet dataSet)
@@ -416,6 +417,14 @@ public class NeuralNetworkCreation
         columnNames[11] = "0 0 0 1 - Folk";
             
         dataSetUserDefined.setColumnNames(columnNames);
+    }
+    
+    private void neuralNetworkProperties(NeuralNetwork neuralNetwork)
+    {
+        System.out.println("\nSaved Artificial Neural Network Properties " + 
+                    "\nArtificial Neural Network: " + neuralNetwork.getNetworkType() +
+                    "\nInputs: " + neuralNetwork.getInputsCount() + "\nOutputs: " + 
+                    neuralNetwork.getOutputsCount());
     }
     
     public void dataSetTrainingCreation()
