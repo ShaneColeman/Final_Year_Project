@@ -248,16 +248,31 @@ public class ANNDataSetSetup
             DataSetTrain train = new DataSetTrain(8,4);
 
             File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
+            
+            if(file.exists())
+            {
+                System.out.println("File " + file.getName() + " exists\n");
+            }
+            
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
-            //Set Data Set Attribute Column Names
-            setColumnNames(train.getTrainingDataSet(),bDS);
-            System.out.println(Arrays.toString(train.getTrainingColumnNames()));
+            Iterator<DataSetRow> it = bDS.getRows().iterator();
+            while(it.hasNext())
+            {
+                DataSetRow dataRow = it.next();
+                train.addDataSetRow(dataRow);
+            }
             
+            /*
             for (DataSetRow dataRow : bDS.getRows()) 
             {
                 train.addDataSetRow(dataRow);
             }
+            */
+            
+            //Set Data Set Attribute Column Names
+            setColumnNames(train.getTrainingDataSet(),bDS);
+            System.out.println(Arrays.toString(train.getTrainingColumnNames()));
             
             //Place within for-loop
             //bDS.addRow(dataRow);
@@ -295,6 +310,10 @@ public class ANNDataSetSetup
             
             currentDateAndTime();
         }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("File does not exist: " + e.getMessage());
+        }
         catch(Exception e)
         {
             e.printStackTrace();
@@ -306,9 +325,16 @@ public class ANNDataSetSetup
     {
         try
         {
+            //Test Data Set
             DataSetTest test = new DataSetTest(8,4);
 
             File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
+            
+            if(file.exists())
+            {
+                System.out.println("File " + file.getName() + " exists\n");
+            }
+            
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
 
             Iterator<DataSetRow> it = bDS.getRows().iterator();
@@ -317,6 +343,13 @@ public class ANNDataSetSetup
                 DataSetRow dataRow = it.next();
                 test.addDataSetRow(dataRow);
             }
+            
+            /*
+            for (DataSetRow dataRow : bDS.getRows()) 
+            {
+                test.addDataSetRow(dataRow);
+            }
+            */
             
             //Set Data Set Attribute Column Names
             setColumnNames(test.getTestingDataSet(),bDS);
@@ -354,6 +387,10 @@ public class ANNDataSetSetup
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             currentDateAndTime();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("File does not exist: " + e.getMessage());
         }
         catch(Exception e)
         {
