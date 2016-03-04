@@ -45,6 +45,7 @@ public class DataSetTest extends DataSetANN
         return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
     }
     
+    /*
     public void getTestingBDS(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
     {
         File file = new File(fileName);
@@ -57,6 +58,7 @@ public class DataSetTest extends DataSetANN
             //bDS.addRow(dataRow);
         }
     }
+    */
     
     public String[] getTestingColumnNames()
     {

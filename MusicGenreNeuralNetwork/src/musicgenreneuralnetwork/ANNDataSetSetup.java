@@ -84,8 +84,8 @@ public class ANNDataSetSetup
             //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
             
             //Save Neural Network
-            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
             currentDateAndTime();
         }
@@ -147,7 +147,7 @@ public class ANNDataSetSetup
     {
         try
         {
-            //Training Data Set
+            //Training Data Set Acquired From File
             DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
 
             //Set Data Set Attribute Column Names
@@ -197,7 +197,7 @@ public class ANNDataSetSetup
     {
         try
         {
-            //Training Data Set
+            //Testing Data Set
             DataSet dS = DataSetTest.testingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
 
             //Set Data Set Attribute Column Names

@@ -60,6 +60,7 @@ public class DataSetTrain extends DataSetANN
         return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
     }
     
+    /*
     public void getTrainingBDS(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
     {
         File file = new File(fileName);
@@ -72,6 +73,7 @@ public class DataSetTrain extends DataSetANN
             //bDS.addRow(dataRow);
         }
     }
+    */
     
     public String[] getTrainingColumnNames()
     {

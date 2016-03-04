@@ -17,7 +17,7 @@ public class ANNDriver {
     {
         ANNDataSetSetup nNC = new ANNDataSetSetup();
         
-        //nNC.trainedMLPDataSetTrain();
+        nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
         
         //nNC.trainedMLPDSTrainFile();
