@@ -17,13 +17,13 @@ public class ANNDriver {
     {
         ANNDataSetSetup nNC = new ANNDataSetSetup();
         
-        nNC.trainedMLPDataSetTrain();
+        //nNC.trainedMLPDataSetTrain();
         //nNC.savedMLPDataSetTest();
         
         //nNC.trainedMLPDSTrainFile();
         //nNC.savedMLPDSTestFile();
         
-        //nNC.trainedMLPBDSTrainFile();
+        nNC.trainedMLPBDSTrainFile();
         //nNC.savedMLPBDSTestFile();
     }
 }

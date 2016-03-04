@@ -14,6 +14,7 @@ import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
+import org.neuroph.core.learning.error.MeanSquaredError;
 import org.neuroph.nnet.learning.BackPropagation;
 import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
@@ -113,18 +114,6 @@ public class ANNDataSetSetup
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
 
-            //Test Code - Can Remove
-            mBP = new MomentumBackpropagation();
-            mBP.setMaxIterations(150);
-            mBP.setMaxError(0.02);
-            mBP.setLearningRate(0.7);
-            mBP.setMomentum(0.5);
-            savedMLP.learn(dataTest.getTestingDataSet(), mBP);
-            //Max Error - Momentum BackPropagation
-            System.out.println("\nMax Error: " + mBP.getTotalNetworkError());
-            //Current Iteration
-            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
-            
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
             testANN(savedMLP,dataTest.getTestingDataSet());
@@ -465,16 +454,22 @@ public class ANNDataSetSetup
     {
         Iterator<DataSetRow> it = dataSet.getRows().iterator();
         double[] aNNOutput;
+        DataSetRow dataRow;
+        MeanSquaredError mSE = new MeanSquaredError();
         
         while(it.hasNext())
         {
-            DataSetRow dataRow = it.next();
+            dataRow = it.next();
             aNN.setInput(dataRow.getInput());
             aNN.calculate();
             aNNOutput = aNN.getOutput();
             System.out.println("\nInput: " + Arrays.toString(dataRow.getInput()));
             System.out.println("Output: " + Arrays.toString(aNNOutput));
             System.out.println("Desired Output: " + Arrays.toString(dataRow.getDesiredOutput()));
+            
+            mSE.calculatePatternError(aNNOutput, dataRow.getDesiredOutput());
         }
+        
+        System.out.println(mSE.getTotalError());
     }
 }
