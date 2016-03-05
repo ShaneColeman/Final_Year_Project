@@ -244,9 +244,10 @@ public class ANNDataSetSetup
     {
         try
         {
-            //Training Data Set
+            //User Defined Training Data Set Class Instantiation
             DataSetTrain train = new DataSetTrain(8,4);
 
+            //Training Data Set File Location
             File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             
             if(file.exists())
@@ -254,8 +255,14 @@ public class ANNDataSetSetup
                 System.out.println("File " + file.getName() + " exists\n");
             }
             
+            //Neuroph Framework BufferedDataSet Class
             BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
+            /*
+            Iterate through each row within the data set and add the row
+            to the DataSetTrain class using the user defined addDataSetRow
+            Method
+            */
             Iterator<DataSetRow> it = bDS.getRows().iterator();
             while(it.hasNext())
             {
