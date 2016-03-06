@@ -377,9 +377,9 @@ public class ANNDataSetSetup
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(2500);
-            mBP.setMaxError(0.04);
-            mBP.setLearningRate(0.2);
-            mBP.setMomentum(0.7);
+            mBP.setMaxError(0.03);
+            mBP.setLearningRate(0.5);
+            mBP.setMomentum(0.4);
             //Learning the Data Set using Momentum BackPropagation 
             savedMLP.learn(test.getTestingDataSet(), mBP);
             //Total Network Error of Current Iteration - Momentum BackPropagation
