@@ -312,8 +312,8 @@ public class ANNDataSetSetup
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Save Neural Network
-            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
             currentDateAndTime();
         }
