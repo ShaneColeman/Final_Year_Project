@@ -248,7 +248,10 @@ public class ANNDataSetSetup
             DataSetTrain train = new DataSetTrain(8,4);
 
             //Training Data Set File Location
-            File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
+            //File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
+            
+            //Test Code - Can Remove
+            File file = new File("C:\\Users\\Windows\\Desktop\\MusicGenreNorm.csv");
             
             if(file.exists())
             {
@@ -256,7 +259,10 @@ public class ANNDataSetSetup
             }
             
             //Neuroph Framework BufferedDataSet Class
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            
+            //Test Code - Can Remove
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
             
             /*
             Iterate through each row within the data set and add the row
