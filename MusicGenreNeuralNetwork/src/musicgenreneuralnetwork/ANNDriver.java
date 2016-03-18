@@ -15,7 +15,7 @@ public class ANNDriver {
     
     public static void main(String[] args) throws FileNotFoundException 
     {
-        //Driver Class Instantiation
+        //Driver Class Instantiation Setup
         ANNDataSetSetup nNC = new ANNDataSetSetup();
         
         //nNC.trainedMLPDataSetTrain();
