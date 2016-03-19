@@ -254,7 +254,7 @@ public class ANNDataSetSetup
             File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
             
             //Training Data Set - CSV File
-            //File file = new File("C:\\Users\\Windows\\Desktop\\MusicGenreNorm.csv");
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
             
             if(file.exists())
             {
