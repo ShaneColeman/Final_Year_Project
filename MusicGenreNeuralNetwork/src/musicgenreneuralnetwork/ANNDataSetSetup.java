@@ -251,10 +251,10 @@ public class ANNDataSetSetup
             //File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             
             //Training Data Set File Location - Project Folder Location
-            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
             
             //Training Data Set - CSV File
-            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
             
             if(file.exists())
             {
@@ -264,11 +264,11 @@ public class ANNDataSetSetup
             //Neuroph Framework BufferedDataSet Class
             //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
-            //Buffered Data Set - CSV File
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
-            
             //Buffered Data Set - Text File
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            
+            //Buffered Data Set - CSV File
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
             
             /*
             Iterate through each row within the data set and add the row
@@ -344,14 +344,17 @@ public class ANNDataSetSetup
     {
         try
         {
-            //Test Data Set
+            //User Defined Testing Data Set Class Instantiation
             DataSetTest test = new DataSetTest(8,4);
             
             //Testing Data Set File Location - Desktop Location
             //File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
             
             //Testing Data Set File Location - Project Folder Location
-            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
+            
+            //Training Data Set - CSV File
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
             
             if(file.exists())
             {
@@ -359,11 +362,16 @@ public class ANNDataSetSetup
             }
             
             //Buffered Data Set - Text File
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
             //Buffered Data Set - CSV File
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
 
+            /*
+            Iterate through each row within the data set and add the row
+            to the DataSetTest class using the user defined addDataSetRow
+            Method
+            */
             Iterator<DataSetRow> it = bDS.getRows().iterator();
             while(it.hasNext())
             {
