@@ -24,7 +24,7 @@ public class ANNDriver {
         //nNC.trainedMLPDSTrainFile();
         //nNC.savedMLPDSTestFile();
         
-        //nNC.trainedMLPBDSTrainFile();
-        nNC.savedMLPBDSTestFile();
+        nNC.trainedMLPBDSTrainFile();
+        //nNC.savedMLPBDSTestFile();
     }
 }

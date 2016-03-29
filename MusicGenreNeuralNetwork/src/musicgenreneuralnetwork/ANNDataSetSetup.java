@@ -245,16 +245,25 @@ public class ANNDataSetSetup
         try
         {
             //User Defined Training Data Set Class Instantiation
-            DataSetTrain train = new DataSetTrain(8,4);
+            //Full Training Data Set
+            //DataSetTrain train = new DataSetTrain(8,4);
 
+            //Training Data Set - 4 Attributes
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            DataSetTrain train = new DataSetTrain(4,4);
+            
             //Training Data Set File Location - Desktop Location
             //File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             
             //Training Data Set File Location - Project Folder Location
             //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
             
-            //Training Data Set - CSV File
-            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
+            //Training Data Set - CSV File - Full Data Set
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
+            
+            //Training Data Set - CSV File - 4 Attributes
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            File file = new File("C:\\Users\\Windows\\Desktop\\TrainNorm4Attributes.csv");
             
             if(file.exists())
             {
@@ -267,8 +276,12 @@ public class ANNDataSetSetup
             //Buffered Data Set - Text File
             //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
-            //Buffered Data Set - CSV File
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            //Buffered Data Set - CSV File - Full Data Set
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            
+            //Buffered Data Set - CSV File - 4 Attributes
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            BufferedDataSet bDS = new BufferedDataSet(file,4,4,",");
             
             /*
             Iterate through each row within the data set and add the row
@@ -289,16 +302,17 @@ public class ANNDataSetSetup
             }
             */
             
-            //Set Data Set Attribute Column Names
-            setColumnNames(train.getTrainingDataSet(),bDS);
-            System.out.println(Arrays.toString(train.getTrainingColumnNames()));
+            //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
+            //setColumnNames(train.getTrainingDataSet(),bDS);
+            //System.out.println(Arrays.toString(train.getTrainingColumnNames()));
             
             //Place within for-loop
             //bDS.addRow(dataRow);
             
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
-            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
+            //mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
+            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 4, 4, 4);
             
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
@@ -324,8 +338,13 @@ public class ANNDataSetSetup
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Save Neural Network
+            //8 - 6 - 4
             //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
             //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            
+            //4 - 4 - 4
+            //mlp1.saveNeuralNetwork("mlp1_sig_4_4_4.nnet");
+            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 4, 4, 4) saved");
             
             currentDateAndTime();
         }
@@ -345,7 +364,12 @@ public class ANNDataSetSetup
         try
         {
             //User Defined Testing Data Set Class Instantiation
-            DataSetTest test = new DataSetTest(8,4);
+            //Full Attributes
+            //DataSetTest test = new DataSetTest(8,4);
+            
+            //4 Attributes
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            DataSetTest test = new DataSetTest(4,4);
             
             //Testing Data Set File Location - Desktop Location
             //File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
@@ -353,8 +377,11 @@ public class ANNDataSetSetup
             //Testing Data Set File Location - Project Folder Location
             //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
             
-            //Training Data Set - CSV File
-            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
+            //Testing Data Set - CSV File - Full Attributes
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
+            
+            //Testing Data Set - CSV File - 4 Attributes
+            File file = new File("C:\\Users\\Windows\\Desktop\\TestNorm4Attributes.csv");
             
             if(file.exists())
             {
@@ -364,9 +391,13 @@ public class ANNDataSetSetup
             //Buffered Data Set - Text File
             //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
-            //Buffered Data Set - CSV File
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            //Buffered Data Set - CSV File - Full Attributes
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
 
+            //Buffered Data Set - CSV File - 4 Attributes 
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            BufferedDataSet bDS = new BufferedDataSet(file,4,4,",");
+            
             /*
             Iterate through each row within the data set and add the row
             to the DataSetTest class using the user defined addDataSetRow
@@ -386,9 +417,9 @@ public class ANNDataSetSetup
             }
             */
             
-            //Set Data Set Attribute Column Names
-            setColumnNames(test.getTestingDataSet(),bDS);
-            System.out.println(Arrays.toString(test.getTestingColumnNames()));
+            //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
+            //setColumnNames(test.getTestingDataSet(),bDS);
+            //System.out.println(Arrays.toString(test.getTestingColumnNames()));
             
             //Place within for-loop
             //bDS.addRow(dataRow);
@@ -397,8 +428,13 @@ public class ANNDataSetSetup
             //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
             //Load Saved Neural Network
+            //8 - 6 - 4
+            //System.out.println("\nLoading Saved Neural Network");
+            //NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            //neuralNetworkProperties(savedMLP);
+            
             System.out.println("\nLoading Saved Neural Network");
-            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_4_4_4.nnet");
             neuralNetworkProperties(savedMLP);
             
             //Test Code - Can Remove If Not Needed
