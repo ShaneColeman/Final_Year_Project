@@ -16,15 +16,18 @@ public class ANNDriver {
     public static void main(String[] args) throws FileNotFoundException 
     {
         //ANNDriver Class Runnable 
-        ANNDataSetSetup nNC = new ANNDataSetSetup();
+        ANNDataSetSetup aNN = new ANNDataSetSetup();
         
-        //nNC.trainedMLPDataSetTrain();
-        //nNC.savedMLPDataSetTest();
+        //aNN.trainedMLPDataSetTrain();
+        //aNN.savedMLPDataSetTest();
         
-        //nNC.trainedMLPDSTrainFile();
-        //nNC.savedMLPDSTestFile();
+        //aNN.trainedMLPDSTrainFile();
+        //aNN.savedMLPDSTestFile();
         
-        nNC.trainedMLPBDSTrainFile();
-        //nNC.savedMLPBDSTestFile();
+        aNN.trainedMLPBDSTrainFile();
+        //aNN.savedMLPBDSTestFile();
+        
+        //aNN.trainedMLPBDSTrainFile4Inputs();
+        //aNN.savedMLPBDSTestFile4Inputs();
     }
 }

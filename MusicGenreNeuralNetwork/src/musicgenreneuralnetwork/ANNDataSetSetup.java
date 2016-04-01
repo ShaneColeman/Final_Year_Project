@@ -40,7 +40,7 @@ public class ANNDataSetSetup
             dataSetTrainingCreation();
             
             //Set Data Set Attribute Column Names
-            setColumnNames(dataTrain.getTrainingDataSet());
+            //setColumnNames(dataTrain.getTrainingDataSet());
             System.out.println(Arrays.toString(dataTrain.getTrainingColumnNames()));
 
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
@@ -246,24 +246,16 @@ public class ANNDataSetSetup
         {
             //User Defined Training Data Set Class Instantiation
             //Full Training Data Set
-            //DataSetTrain train = new DataSetTrain(8,4);
+            DataSetTrain train = new DataSetTrain(8,4);
 
-            //Training Data Set - 4 Attributes
-            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
-            DataSetTrain train = new DataSetTrain(4,4);
-            
             //Training Data Set File Location - Desktop Location
             //File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             
             //Training Data Set File Location - Project Folder Location
             //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
             
-            //Training Data Set - CSV File - Full Data Set
-            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
-            
-            //Training Data Set - CSV File - 4 Attributes
-            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
-            File file = new File("C:\\Users\\Windows\\Desktop\\TrainNorm4Attributes.csv");
+            //Training Data Set - CSV File - Full Data Set - Project Folder Location
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
             
             if(file.exists())
             {
@@ -277,7 +269,193 @@ public class ANNDataSetSetup
             //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
             //Buffered Data Set - CSV File - Full Data Set
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            
+            /*
+            Iterate through each row within the data set and add the row
+            to the DataSetTrain class using the user defined addDataSetRow
+            Method
+            */
+            Iterator<DataSetRow> it = bDS.getRows().iterator();
+            while(it.hasNext())
+            {
+                DataSetRow dataRow = it.next();
+                train.addDataSetRow(dataRow);
+            }
+            
+            /*
+            for (DataSetRow dataRow : bDS.getRows()) 
+            {
+                train.addDataSetRow(dataRow);
+            }
+            */
+            
+            //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
+            setColumnNames(train.getTrainingDataSet(),bDS);
+            System.out.println(Arrays.toString(train.getTrainingColumnNames()));
+            
+            //Place within for-loop
+            //bDS.addRow(dataRow);
+            
+            //Multi-Layer Perceptron Artificial Neural Network  - User Defined
+            MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
+            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
+            
+            //Momentum Back Propagation
+            mBP = new MomentumBackpropagation();
+            mBP.setMaxIterations(2500);
+            mBP.setMaxError(0.04);
+            mBP.setLearningRate(0.2);
+            mBP.setMomentum(0.7);
+            
+            //Learning the Data Set using Momentum BackPropagation 
+            mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(), mBP);
+            
+            //Input / Output (Desired) Values - Train Data Set
+            //System.out.println("\nTraining - Input / Output Values (Desired): " + train.getTrainingDataSet().getRows());
+            
+            //Total Network Error of Current Iteration - Momentum BackPropagation
+            System.out.println("\nTotal Network Error of Current Iteration: " + mBP.getTotalNetworkError());
+            
+            //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Trained Neural Network");
+            testANN(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+            
+            //Current Iteration - Momentum BackPropagation
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            
+            //Save Neural Network
+            //8 - 6 - 4
+            mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
+            
+            currentDateAndTime();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("File does not exist: " + e.getMessage());
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    //3 - B
+    public void savedMLPBDSTestFile() throws FileNotFoundException
+    {
+        try
+        {
+            //User Defined Testing Data Set Class Instantiation
+            //Full Attributes
+            DataSetTest test = new DataSetTest(8,4);
+            
+            //Testing Data Set File Location - Desktop Location
+            //File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
+            
+            //Testing Data Set File Location - Project Folder Location
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
+            
+            //Testing Data Set - CSV File - Full Attributes - Project Folder Location
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
+            
+            if(file.exists())
+            {
+                System.out.println("File " + file.getName() + " exists\n");
+            }
+            
+            //Buffered Data Set - Text File
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            
+            //Buffered Data Set - CSV File - Full Attributes
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+
+            /*
+            Iterate through each row within the data set and add the row
+            to the DataSetTest class using the user defined addDataSetRow
+            Method
+            */
+            Iterator<DataSetRow> it = bDS.getRows().iterator();
+            while(it.hasNext())
+            {
+                DataSetRow dataRow = it.next();
+                test.addDataSetRow(dataRow);
+            }
+            
+            /*
+            for (DataSetRow dataRow : bDS.getRows()) 
+            {
+                test.addDataSetRow(dataRow);
+            }
+            */
+            
+            //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
+            setColumnNames(test.getTestingDataSet(),bDS);
+            System.out.println(Arrays.toString(test.getTestingColumnNames()));
+            
+            //Place within for-loop
+            //bDS.addRow(dataRow);
+            
+            //Input / Output (Desired) Values - Train Data Set
+            //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
+
+            //Load Saved Neural Network
+            //8 - 6 - 4
+            System.out.println("\nLoading Saved Neural Network");
+            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
+            neuralNetworkProperties(savedMLP);
+            
+            //Test Code - Can Remove If Not Needed
+            //Momentum BackPropagation
+            mBP = new MomentumBackpropagation();
+            mBP.setMaxIterations(2500);
+            mBP.setMaxError(0.04);
+            mBP.setLearningRate(0.2);
+            mBP.setMomentum(0.7);
+            //Learning the Data Set using Momentum BackPropagation 
+            savedMLP.learn(test.getTestingDataSet(), mBP);
+            //Total Network Error of Current Iteration - Momentum BackPropagation
+            System.out.println("\nTotal Network Error of Current Iteration: " + mBP.getTotalNetworkError());
+            
+            //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            System.out.println("\nTesting Saved Neural Network");
+            testANN(savedMLP,test.getTestingDataSet());
+            
+            //Test Code - Can Remove If Not Needed
+            //Current Iteration - Momentum BackPropagation
+            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            
+            currentDateAndTime();
+        }
+        catch(FileNotFoundException e)
+        {
+            System.out.println("File does not exist: " + e.getMessage());
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    
+    //4 - A
+    public void trainedMLPBDSTrainFile4Inputs() throws FileNotFoundException
+    {
+        try
+        {
+            //User Defined Training Data Set Class Instantiation
+            
+            //Training Data Set - 4 Attributes
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            DataSetTrain train = new DataSetTrain(4,4);
+            
+            //Training Data Set - CSV File - 4 Attributes
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            File file = new File("C:\\Users\\Windows\\Desktop\\TrainNorm4Attributes.csv");
+            
+            if(file.exists())
+            {
+                System.out.println("File " + file.getName() + " exists\n");
+            }
             
             //Buffered Data Set - CSV File - 4 Attributes
             //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
@@ -343,8 +521,8 @@ public class ANNDataSetSetup
             //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
             //4 - 4 - 4
-            //mlp1.saveNeuralNetwork("mlp1_sig_4_4_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 4, 4, 4) saved");
+            mlp1.saveNeuralNetwork("mlp1_sig_4_4_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 4, 4, 4) saved");
             
             currentDateAndTime();
         }
@@ -358,27 +536,16 @@ public class ANNDataSetSetup
         }
     }
     
-    //3 - B
-    public void savedMLPBDSTestFile() throws FileNotFoundException
+    //4 - B
+    public void savedMLPBDSTestFile4Inputs() throws FileNotFoundException
     {
         try
         {
             //User Defined Testing Data Set Class Instantiation
-            //Full Attributes
-            //DataSetTest test = new DataSetTest(8,4);
             
             //4 Attributes
             //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
             DataSetTest test = new DataSetTest(4,4);
-            
-            //Testing Data Set File Location - Desktop Location
-            //File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
-            
-            //Testing Data Set File Location - Project Folder Location
-            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
-            
-            //Testing Data Set - CSV File - Full Attributes
-            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
             
             //Testing Data Set - CSV File - 4 Attributes
             File file = new File("C:\\Users\\Windows\\Desktop\\TestNorm4Attributes.csv");
@@ -388,12 +555,6 @@ public class ANNDataSetSetup
                 System.out.println("File " + file.getName() + " exists\n");
             }
             
-            //Buffered Data Set - Text File
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
-            
-            //Buffered Data Set - CSV File - Full Attributes
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
-
             //Buffered Data Set - CSV File - 4 Attributes 
             //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
             BufferedDataSet bDS = new BufferedDataSet(file,4,4,",");
@@ -428,11 +589,7 @@ public class ANNDataSetSetup
             //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
             //Load Saved Neural Network
-            //8 - 6 - 4
-            //System.out.println("\nLoading Saved Neural Network");
-            //NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-            //neuralNetworkProperties(savedMLP);
-            
+            //4 - 4 - 4
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_4_4_4.nnet");
             neuralNetworkProperties(savedMLP);
@@ -441,9 +598,9 @@ public class ANNDataSetSetup
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(2500);
-            mBP.setMaxError(0.03);
-            mBP.setLearningRate(0.5);
-            mBP.setMomentum(0.4);
+            mBP.setMaxError(0.04);
+            mBP.setLearningRate(0.2);
+            mBP.setMomentum(0.7);
             //Learning the Data Set using Momentum BackPropagation 
             savedMLP.learn(test.getTestingDataSet(), mBP);
             //Total Network Error of Current Iteration - Momentum BackPropagation
