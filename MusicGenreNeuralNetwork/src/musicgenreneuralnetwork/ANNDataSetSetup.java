@@ -303,10 +303,10 @@ public class ANNDataSetSetup
             
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
-            mBP.setMaxIterations(2500);
-            mBP.setMaxError(0.04);
-            mBP.setLearningRate(0.2);
-            mBP.setMomentum(0.7);
+            //mBP.setMaxIterations(3000); //2500
+            mBP.setMaxError(0.02); //0.04
+            mBP.setLearningRate(0.5); //0.2
+            mBP.setMomentum(0.5); //0.7
             
             //Learning the Data Set using Momentum BackPropagation 
             mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(), mBP);
@@ -405,6 +405,7 @@ public class ANNDataSetSetup
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
             neuralNetworkProperties(savedMLP);
             
+            /*
             //Test Code - Can Remove If Not Needed
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
@@ -416,6 +417,7 @@ public class ANNDataSetSetup
             savedMLP.learn(test.getTestingDataSet(), mBP);
             //Total Network Error of Current Iteration - Momentum BackPropagation
             System.out.println("\nTotal Network Error of Current Iteration: " + mBP.getTotalNetworkError());
+            */
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
@@ -423,7 +425,7 @@ public class ANNDataSetSetup
             
             //Test Code - Can Remove If Not Needed
             //Current Iteration - Momentum BackPropagation
-            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            //System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             currentDateAndTime();
         }
@@ -473,6 +475,8 @@ public class ANNDataSetSetup
                 train.addDataSetRow(dataRow);
             }
             
+            System.out.println("Attributes: Sampling Frequency, Tempo, Root Mean Square and Dynamic Range");
+            
             /*
             for (DataSetRow dataRow : bDS.getRows()) 
             {
@@ -490,11 +494,11 @@ public class ANNDataSetSetup
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
             //mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
-            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 4, 4, 4);
+            mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 4, 6, 4);
             
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
-            mBP.setMaxIterations(2500);
+            //mBP.setMaxIterations(5000);
             mBP.setMaxError(0.04);
             mBP.setLearningRate(0.2);
             mBP.setMomentum(0.7);
@@ -520,9 +524,9 @@ public class ANNDataSetSetup
             //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
             //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
             
-            //4 - 4 - 4
-            mlp1.saveNeuralNetwork("mlp1_sig_4_4_4.nnet");
-            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 4, 4, 4) saved");
+            //4 - 6 - 4
+            mlp1.saveNeuralNetwork("mlp1_sig_4_6_4.nnet");
+            System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 4, 6, 4) saved");
             
             currentDateAndTime();
         }
@@ -571,6 +575,8 @@ public class ANNDataSetSetup
                 test.addDataSetRow(dataRow);
             }
             
+            System.out.println("Attributes: Sampling Frequency, Tempo, Root Mean Square and Dynamic Range");
+            
             /*
             for (DataSetRow dataRow : bDS.getRows()) 
             {
@@ -589,11 +595,13 @@ public class ANNDataSetSetup
             //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
             //Load Saved Neural Network
-            //4 - 4 - 4
+            //4 - 6 - 4
             System.out.println("\nLoading Saved Neural Network");
-            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_4_4_4.nnet");
+            NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_4_6_4.nnet");
+            
             neuralNetworkProperties(savedMLP);
             
+            /*
             //Test Code - Can Remove If Not Needed
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
@@ -602,9 +610,10 @@ public class ANNDataSetSetup
             mBP.setLearningRate(0.2);
             mBP.setMomentum(0.7);
             //Learning the Data Set using Momentum BackPropagation 
-            savedMLP.learn(test.getTestingDataSet(), mBP);
+            //savedMLP.learn(test.getTestingDataSet(), mBP);
             //Total Network Error of Current Iteration - Momentum BackPropagation
             System.out.println("\nTotal Network Error of Current Iteration: " + mBP.getTotalNetworkError());
+            */
             
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
@@ -612,7 +621,7 @@ public class ANNDataSetSetup
             
             //Test Code - Can Remove If Not Needed
             //Current Iteration - Momentum BackPropagation
-            System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
+            //System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             currentDateAndTime();
         }
