@@ -41,7 +41,10 @@ public class ANNDataSetSetup
             
             //Set Data Set Attribute Column Names
             //setColumnNames(dataTrain.getTrainingDataSet());
-            System.out.println(Arrays.toString(dataTrain.getTrainingColumnNames()));
+            //System.out.println(Arrays.toString(dataTrain.getTrainingColumnNames()));
+            System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
+                    "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
+                    "\nTonality, Number of Digital Errors");
 
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
@@ -104,9 +107,12 @@ public class ANNDataSetSetup
             dataSetTestingCreation();
             
             //Set Data Set Attribute Column Names
-            setColumnNames(dataTest.getTestingDataSet());
-            System.out.println(Arrays.toString(dataTest.getTestingColumnNames()));
-
+            //setColumnNames(dataTest.getTestingDataSet());
+            //System.out.println(Arrays.toString(dataTest.getTestingColumnNames()));
+            System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
+                    "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
+                    "\nTonality, Number of Digital Errors");
+            
             //Input / Output (Desired) Values - Test Data Set
             //System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
 
@@ -151,8 +157,11 @@ public class ANNDataSetSetup
             DataSet dS = DataSetTrain.trainingSetFromFile("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt", 8, 4, "\t");
 
             //Set Data Set Attribute Column Names
-            setColumnNames(dS);
-            System.out.println(Arrays.toString(dS.getColumnNames()));
+            //setColumnNames(dS);
+            //System.out.println(Arrays.toString(dS.getColumnNames()));
+            System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
+                    "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
+                    "\nTonality, Number of Digital Errors");
             
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
@@ -201,8 +210,11 @@ public class ANNDataSetSetup
             DataSet dS = DataSetTest.testingSetFromFile("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt", 8, 4, "\t");
 
             //Set Data Set Attribute Column Names
-            setColumnNames(dS);
-            System.out.println(Arrays.toString(dS.getColumnNames()));
+            //setColumnNames(dS);
+            //System.out.println(Arrays.toString(dS.getColumnNames()));
+            System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
+                    "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
+                    "\nTonality, Number of Digital Errors");
             
             //Input / Output (Desired) Values - Test Data Set
             //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
@@ -252,10 +264,10 @@ public class ANNDataSetSetup
             //File file = new File("C:\\Users\\Windows\\Desktop\\TrainingDataSet50.txt");
             
             //Training Data Set File Location - Project Folder Location
-            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainingDataSet50.txt");
             
             //Training Data Set - CSV File - Full Data Set - Project Folder Location
-            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm.csv");
             
             if(file.exists())
             {
@@ -266,10 +278,10 @@ public class ANNDataSetSetup
             //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
             //Buffered Data Set - Text File
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
             //Buffered Data Set - CSV File - Full Data Set
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
             
             /*
             Iterate through each row within the data set and add the row
@@ -291,8 +303,11 @@ public class ANNDataSetSetup
             */
             
             //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
-            setColumnNames(train.getTrainingDataSet(),bDS);
-            System.out.println(Arrays.toString(train.getTrainingColumnNames()));
+            //setColumnNames(train.getTrainingDataSet(),bDS);
+            //System.out.println(Arrays.toString(train.getTrainingColumnNames()));
+            System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
+                    "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
+                    "\nTonality, Number of Digital Errors");
             
             //Place within for-loop
             //bDS.addRow(dataRow);
@@ -304,9 +319,9 @@ public class ANNDataSetSetup
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
             //mBP.setMaxIterations(3000); //2500
-            mBP.setMaxError(0.02); //0.04
-            mBP.setLearningRate(0.5); //0.2
-            mBP.setMomentum(0.5); //0.7
+            mBP.setMaxError(0.04); //0.04
+            mBP.setLearningRate(0.2); //0.2
+            mBP.setMomentum(0.7); //0.7
             
             //Learning the Data Set using Momentum BackPropagation 
             mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(), mBP);
@@ -354,10 +369,10 @@ public class ANNDataSetSetup
             //File file = new File("C:\\Users\\Windows\\Desktop\\TestingDataSet50.txt");
             
             //Testing Data Set File Location - Project Folder Location
-            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestingDataSet50.txt");
             
             //Testing Data Set - CSV File - Full Attributes - Project Folder Location
-            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
+            //File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm.csv");
             
             if(file.exists())
             {
@@ -365,10 +380,10 @@ public class ANNDataSetSetup
             }
             
             //Buffered Data Set - Text File
-            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
+            BufferedDataSet bDS = new BufferedDataSet(file,8,4,"\t");
             
             //Buffered Data Set - CSV File - Full Attributes
-            BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
+            //BufferedDataSet bDS = new BufferedDataSet(file,8,4,",");
 
             /*
             Iterate through each row within the data set and add the row
@@ -390,8 +405,11 @@ public class ANNDataSetSetup
             */
             
             //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
-            setColumnNames(test.getTestingDataSet(),bDS);
-            System.out.println(Arrays.toString(test.getTestingColumnNames()));
+            //setColumnNames(test.getTestingDataSet(),bDS);
+            //System.out.println(Arrays.toString(test.getTestingColumnNames()));
+            System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
+                    "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
+                    "\nTonality, Number of Digital Errors");
             
             //Place within for-loop
             //bDS.addRow(dataRow);
@@ -475,7 +493,7 @@ public class ANNDataSetSetup
                 train.addDataSetRow(dataRow);
             }
             
-            System.out.println("Attributes: Sampling Frequency, Tempo, Root Mean Square and Dynamic Range");
+            System.out.println("Data Set Attributes\nSampling Frequency, Tempo, Root Mean Square and Dynamic Range");
             
             /*
             for (DataSetRow dataRow : bDS.getRows()) 
@@ -575,7 +593,7 @@ public class ANNDataSetSetup
                 test.addDataSetRow(dataRow);
             }
             
-            System.out.println("Attributes: Sampling Frequency, Tempo, Root Mean Square and Dynamic Range");
+            System.out.println("Data Set Attributes\nSampling Frequency, Tempo, Root Mean Square and Dynamic Range");
             
             /*
             for (DataSetRow dataRow : bDS.getRows()) 
