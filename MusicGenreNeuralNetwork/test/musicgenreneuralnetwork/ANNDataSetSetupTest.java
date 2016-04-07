@@ -112,6 +112,30 @@ public class ANNDataSetSetupTest {
     }
 
     /**
+     * Test of trainedMLPBDSTrainFile4Inputs method, of class ANNDataSetSetup.
+     */
+    @Test
+    public void testTrainedMLPBDSTrainFile4Inputs() throws Exception {
+        System.out.println("trainedMLPBDSTrainFile4Inputs");
+        ANNDataSetSetup instance = new ANNDataSetSetup();
+        instance.trainedMLPBDSTrainFile4Inputs();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of savedMLPBDSTestFile4Inputs method, of class ANNDataSetSetup.
+     */
+    @Test
+    public void testSavedMLPBDSTestFile4Inputs() throws Exception {
+        System.out.println("savedMLPBDSTestFile4Inputs");
+        ANNDataSetSetup instance = new ANNDataSetSetup();
+        instance.savedMLPBDSTestFile4Inputs();
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
      * Test of currentDateAndTime method, of class ANNDataSetSetup.
      */
     @Test
