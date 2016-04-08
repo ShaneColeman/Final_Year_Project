@@ -470,7 +470,7 @@ public class ANNDataSetSetup
             
             //Training Data Set - CSV File - 4 Attributes
             //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
-            File file = new File("C:\\Users\\Windows\\Desktop\\TrainNorm4Attributes.csv");
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TrainNorm4Attributes.csv");
             
             if(file.exists())
             {
@@ -509,17 +509,20 @@ public class ANNDataSetSetup
             //Place within for-loop
             //bDS.addRow(dataRow);
             
-            //Multi-Layer Perceptron Artificial Neural Network  - User Defined
+            //Multi-Layer Perceptron Artificial Neural Network
+            //Transfer Function: Sigmoid
+            //Inputs: 4
+            //Hidden: 6
+            //Outputs: 4
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
-            //mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 8, 6, 4);
             mlp1.multiLayerPerceptron(TransferFunctionType.SIGMOID, 4, 6, 4);
             
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
-            //mBP.setMaxIterations(5000);
-            mBP.setMaxError(0.04);
-            mBP.setLearningRate(0.2);
-            mBP.setMomentum(0.7);
+            //mBP.setMaxIterations(50000);
+            mBP.setMaxError(0.01); //0.04
+            mBP.setLearningRate(0.3); //0.2
+            mBP.setMomentum(0.2); //0.7
             
             //Learning the Data Set using Momentum BackPropagation 
             mlp1.learnDataSetWithMBackP(train.getTrainingDataSet(), mBP);
@@ -530,19 +533,15 @@ public class ANNDataSetSetup
             //Total Network Error of Current Iteration - Momentum BackPropagation
             System.out.println("\nTotal Network Error of Current Iteration: " + mBP.getTotalNetworkError());
             
-            //Test Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            //Test Neural Network - Multi Layer Perceptron Sigmoid 4 6 4
             System.out.println("\nTesting Trained Neural Network");
-            testANN(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
+            TestNeuralNetwork testNeuralNetwork = new TestNeuralNetwork();
+            testNeuralNetwork.testANN(mlp1.getMultiLayerPerceptron(),train.getTrainingDataSet());
             
             //Current Iteration - Momentum BackPropagation
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
             //Save Neural Network
-            //8 - 6 - 4
-            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
-            
-            //4 - 6 - 4
             mlp1.saveNeuralNetwork("mlp1_sig_4_6_4.nnet");
             System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 4, 6, 4) saved");
             
@@ -565,12 +564,13 @@ public class ANNDataSetSetup
         {
             //User Defined Testing Data Set Class Instantiation
             
-            //4 Attributes
+            //Testing Data Set - 4 Attributes
             //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
             DataSetTest test = new DataSetTest(4,4);
             
             //Testing Data Set - CSV File - 4 Attributes
-            File file = new File("C:\\Users\\Windows\\Desktop\\TestNorm4Attributes.csv");
+            //Sampling Frequency, Tempo, Root Mean Square, Dynamic Range
+            File file = new File("C:\\Users\\Windows\\Final_Year_Project\\MusicGenreNeuralNetwork\\TestNorm4Attributes.csv");
             
             if(file.exists())
             {
@@ -613,10 +613,15 @@ public class ANNDataSetSetup
             //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
             //Load Saved Neural Network
-            //4 - 6 - 4
+            //Multi-Layer Perceptron Artificial Neural Network
+            //Transfer Function: Sigmoid
+            //Inputs: 4
+            //Hidden: 6
+            //Outputs: 4
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_4_6_4.nnet");
             
+            //Display Artificial Neural Network Properties
             neuralNetworkProperties(savedMLP);
             
             /*
@@ -633,9 +638,10 @@ public class ANNDataSetSetup
             System.out.println("\nTotal Network Error of Current Iteration: " + mBP.getTotalNetworkError());
             */
             
-            //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
+            //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 4 6 4
             System.out.println("\nTesting Saved Neural Network");
-            testANN(savedMLP,test.getTestingDataSet());
+            TestNeuralNetwork testNeuralNetwork = new TestNeuralNetwork();
+            testNeuralNetwork.testANN(savedMLP,test.getTestingDataSet());
             
             //Test Code - Can Remove If Not Needed
             //Current Iteration - Momentum BackPropagation

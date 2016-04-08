@@ -10,6 +10,7 @@ import java.util.Iterator;
 import org.neuroph.core.NeuralNetwork;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
+import org.neuroph.core.learning.error.MeanSquaredError;
 
 /**
  *
@@ -17,20 +18,26 @@ import org.neuroph.core.data.DataSetRow;
  */
 public class TestNeuralNetwork 
 {
-    public void testNeuralNetwork(NeuralNetwork nnet, DataSet testDataSet)
+    public void testANN(NeuralNetwork aNN, DataSet dataSet)
     {
-        Iterator<DataSetRow> it = testDataSet.getRows().iterator();
-        double[] networkOutput;
+        Iterator<DataSetRow> it = dataSet.getRows().iterator();
+        double[] aNNOutput;
+        DataSetRow dataRow;
+        MeanSquaredError mSE = new MeanSquaredError();
         
         while(it.hasNext())
         {
-            DataSetRow dataRow = it.next();
-            nnet.setInput(dataRow.getInput());
-            nnet.calculate();
-            networkOutput = nnet.getOutput();
+            dataRow = it.next();
+            aNN.setInput(dataRow.getInput());
+            aNN.calculate();
+            aNNOutput = aNN.getOutput();
             System.out.println("\nInput: " + Arrays.toString(dataRow.getInput()));
-            System.out.println("Output: " + Arrays.toString(networkOutput));
+            System.out.println("Output: " + Arrays.toString(aNNOutput));
             System.out.println("Desired Output: " + Arrays.toString(dataRow.getDesiredOutput()));
+            
+            mSE.calculatePatternError(aNNOutput, dataRow.getDesiredOutput());
         }
+        
+        System.out.println("\nTotal Network Error: " + mSE.getTotalError());
     }
 }
