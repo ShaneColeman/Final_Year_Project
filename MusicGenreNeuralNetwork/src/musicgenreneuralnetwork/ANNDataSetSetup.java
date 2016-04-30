@@ -3,6 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/*
+http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+
+http://neuroph.sourceforge.net/tutorials/MusicClassification/music_classification_by_genre_using_neural_networks.html
+
+http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/MusicClassificationFullDataset.txt
+http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/NormalizedDataSet.txt
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/BufferedDataSet.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/MomentumBackpropagation.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/BackPropagation.html#updateNetworkWeights-double:A-
+
+http://stackoverflow.com/questions/29998335/neuroph-multi-layer-perceptron-backpropagation-learning-not-working
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
+*/
+
 package musicgenreneuralnetwork;
 
 import java.io.File;

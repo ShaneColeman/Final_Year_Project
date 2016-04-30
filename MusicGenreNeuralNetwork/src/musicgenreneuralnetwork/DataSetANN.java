@@ -3,6 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/*
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
+*/
+
 package musicgenreneuralnetwork;
 
 import org.neuroph.core.data.DataSet;

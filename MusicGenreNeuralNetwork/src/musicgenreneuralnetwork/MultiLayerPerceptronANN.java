@@ -3,6 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+/*
+http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
+
+http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
+*/
+
 package musicgenreneuralnetwork;
 
 import org.neuroph.core.data.BufferedDataSet;
