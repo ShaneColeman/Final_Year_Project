@@ -24,7 +24,7 @@ http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.htm
 
 http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/MomentumBackpropagation.html
 
-http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/BackPropagation.html#updateNetworkWeights-double:A-
+http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/BackPropagation.html
 
 http://stackoverflow.com/questions/29998335/neuroph-multi-layer-perceptron-backpropagation-learning-not-working
 
