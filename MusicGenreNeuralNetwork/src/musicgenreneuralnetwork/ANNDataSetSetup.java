@@ -4,32 +4,35 @@
  * and open the template in the editor.
  */
 
-/*
-http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
-
-http://neuroph.sourceforge.net/tutorials/MusicClassification/music_classification_by_genre_using_neural_networks.html
-
-http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/MusicClassificationFullDataset.txt
-http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/NormalizedDataSet.txt
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/BufferedDataSet.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/MomentumBackpropagation.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/BackPropagation.html
-
-http://stackoverflow.com/questions/29998335/neuroph-multi-layer-perceptron-backpropagation-learning-not-working
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
-*/
+/******************************************************************
+*Title: Neuroph Framework, NeuralNetork, MultiLayerPerceptron
+*Site Owner / Sponsor: Neuroph
+*Date: 2016
+*Author: Neuroph
+*Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+*Availability: http://neuroph.sourceforge.net/tutorials/MusicClassification/music_classification_by_genre_using_neural_networks.html
+*Availability: http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/MusicClassificationFullDataset.txt
+*Availability: http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/NormalizedDataSet.txt
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/BufferedDataSet.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/MomentumBackpropagation.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/learning/BackPropagation.html
+*Availability: http://stackoverflow.com/questions/29998335/neuroph-multi-layer-perceptron-backpropagation-learning-not-working
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
+*Date Accessed: January to April 2016
+*Modified: User created ANNDataSetSetup class using the Neuroph framework. Methods 1A to 4B are user created using 
+* the user created classes which use the Neuroph framework API. dataSetTrainingCreation and dataSetTesting are
+* user created methods but are modified from the original code, located at this URL:
+* http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+* testANN method has already been supplied code reference
+* Backpropagation and MomentumBackpropagation acquired from Neuroph framework API
+* BufferedDataSet acquired from Neuroph framework API
+* setColumnNames are user created methods, uses the setColumnNames method from Neuroph framework API
+* File and Iterators are user created, uses the DataSet and DataSetRow classes from the Neuroph framework API
+******************************************************************/
 
 package musicgenreneuralnetwork;
 
@@ -147,8 +150,7 @@ public class ANNDataSetSetup
             //Load Saved Neural Network
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-            
-            //Test Code - Can Remove If Not Needed
+
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(2500);
@@ -163,8 +165,7 @@ public class ANNDataSetSetup
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
             testANN(savedMLP,dataTest.getTestingDataSet());
-            
-            //Test Code - Can Remove If Not Needed
+
             //Current Iteration - Momentum BackPropagation
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
@@ -251,7 +252,6 @@ public class ANNDataSetSetup
             System.out.println("\nLoading Saved Neural Network");
             NeuralNetwork savedMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
             
-            //Test Code - Can Remove If Not Needed
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(2500);
@@ -267,7 +267,6 @@ public class ANNDataSetSetup
             System.out.println("\nTesting Saved Neural Network");
             testANN(savedMLP,dS);
             
-            //Test Code - Can Remove If Not Needed
             //Current Iteration - Momentum BackPropagation
             System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
@@ -322,23 +321,13 @@ public class ANNDataSetSetup
                 DataSetRow dataRow = it.next();
                 train.addDataSetRow(dataRow);
             }
-            
-            /*
-            for (DataSetRow dataRow : bDS.getRows()) 
-            {
-                train.addDataSetRow(dataRow);
-            }
-            */
-            
+
             //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
             //setColumnNames(train.getTrainingDataSet(),bDS);
             //System.out.println(Arrays.toString(train.getTrainingColumnNames()));
             System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
                     "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
                     "\nTonality, Number of Digital Errors");
-            
-            //Place within for-loop
-            //bDS.addRow(dataRow);
             
             //Multi-Layer Perceptron Artificial Neural Network  - User Defined
             MultiLayerPerceptronANN mlp1 = new MultiLayerPerceptronANN();
@@ -424,23 +413,13 @@ public class ANNDataSetSetup
                 DataSetRow dataRow = it.next();
                 test.addDataSetRow(dataRow);
             }
-            
-            /*
-            for (DataSetRow dataRow : bDS.getRows()) 
-            {
-                test.addDataSetRow(dataRow);
-            }
-            */
-            
+
             //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
             //setColumnNames(test.getTestingDataSet(),bDS);
             //System.out.println(Arrays.toString(test.getTestingColumnNames()));
             System.out.println("Data Set Attributes\nAuthor and Song Duration, Tempo (BPM), Root Mean Square Amplitue (dB) " +
                     "\nSampling Frequency (kHz), Sampling Rate (b), Dynamic Range (dB) " +
                     "\nTonality, Number of Digital Errors");
-            
-            //Place within for-loop
-            //bDS.addRow(dataRow);
             
             //Input / Output (Desired) Values - Train Data Set
             //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
@@ -452,7 +431,6 @@ public class ANNDataSetSetup
             neuralNetworkProperties(savedMLP);
             
             /*
-            //Test Code - Can Remove If Not Needed
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(2500);
@@ -468,8 +446,7 @@ public class ANNDataSetSetup
             //Test Saved Neural Network - Multi Layer Perceptron Sigmoid 8 6 4
             System.out.println("\nTesting Saved Neural Network");
             testANN(savedMLP,test.getTestingDataSet());
-            
-            //Test Code - Can Remove If Not Needed
+
             //Current Iteration - Momentum BackPropagation
             //System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
@@ -523,20 +500,10 @@ public class ANNDataSetSetup
             
             System.out.println("Data Set Attributes\nSampling Frequency, Tempo, Root Mean Square and Dynamic Range");
             
-            /*
-            for (DataSetRow dataRow : bDS.getRows()) 
-            {
-                train.addDataSetRow(dataRow);
-            }
-            */
-            
             //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
             //setColumnNames(train.getTrainingDataSet(),bDS);
             //System.out.println(Arrays.toString(train.getTrainingColumnNames()));
-            
-            //Place within for-loop
-            //bDS.addRow(dataRow);
-            
+
             //Multi-Layer Perceptron Artificial Neural Network
             //Transfer Function: Sigmoid
             //Inputs: 4
@@ -547,7 +514,7 @@ public class ANNDataSetSetup
             
             //Momentum Back Propagation
             mBP = new MomentumBackpropagation();
-            //mBP.setMaxIterations(50000);
+            mBP.setMaxIterations(50000);
             mBP.setMaxError(0.01); //0.04
             mBP.setLearningRate(0.3); //0.2
             mBP.setMomentum(0.2); //0.7
@@ -623,20 +590,10 @@ public class ANNDataSetSetup
             
             System.out.println("Data Set Attributes\nSampling Frequency, Tempo, Root Mean Square and Dynamic Range");
             
-            /*
-            for (DataSetRow dataRow : bDS.getRows()) 
-            {
-                test.addDataSetRow(dataRow);
-            }
-            */
-            
             //Set Data Set Attribute Column Names - Can Cause Errors if Inputs are not 8
             //setColumnNames(test.getTestingDataSet(),bDS);
             //System.out.println(Arrays.toString(test.getTestingColumnNames()));
-            
-            //Place within for-loop
-            //bDS.addRow(dataRow);
-            
+                        
             //Input / Output (Desired) Values - Train Data Set
             //System.out.println("\nTesting - Input / Output Values (Desired): " + test.getTestingDataSet().getRows());
 
@@ -653,7 +610,6 @@ public class ANNDataSetSetup
             neuralNetworkProperties(savedMLP);
             
             /*
-            //Test Code - Can Remove If Not Needed
             //Momentum BackPropagation
             mBP = new MomentumBackpropagation();
             mBP.setMaxIterations(2500);
@@ -671,7 +627,6 @@ public class ANNDataSetSetup
             TestNeuralNetwork testNeuralNetwork = new TestNeuralNetwork();
             testNeuralNetwork.testANN(savedMLP,test.getTestingDataSet());
             
-            //Test Code - Can Remove If Not Needed
             //Current Iteration - Momentum BackPropagation
             //System.out.println("\nCurrent Iteration: " + mBP.getCurrentIteration());
             
@@ -686,57 +641,6 @@ public class ANNDataSetSetup
             e.printStackTrace();
         }
     }
-    
-    /*
-    public void multiLayerPerceptronCreation() throws FileNotFoundException
-    {
-        try
-        {
-            //Learning the Data Set - No Learning Rule
-            
-            //Learning the Data Set using BackPropagation 
-            //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),bP);
-
-            //Learning the Data Set using Momentum BackPropagation 
-            //mlpANN1.learnDataSet(dataTrain.getTrainingDataSet(),mBP);
-            //mlpANN1.learnDataSet(train.getTrainingDataSet(), bP);
-
-            //System.out.println("\nTraining - Input / Output Values (Desired): " + bDS.getRows());
-
-            //Max Error - BackPropagation
-            //System.out.println("\nMax Error: " + bP.getTotalNetworkError());
-            
-            //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),dS);
-            
-            //testNeuralNetwork(mlpANN1.getMultiLayerPerceptron(),bDS);
-            
-            //Save Neural Network
-            //mlp1.saveNeuralNetwork("mlp1_sig_8_6_4.nnet");
-            //System.out.println("\nMulti-Layer Perceptron A.N.N. (Sigmoid, 8, 6, 4) saved");
-
-            //Test Data Set - Method Call
-            //dataSetTestingCreation();
-
-            //Load Neural Network
-            //NeuralNetwork loadMLP = NeuralNetwork.createFromFile("mlp1_sig_8_6_4.nnet");
-
-            //Input / Output (Desired) Values - Test Data Set
-            //System.out.println("\nTesting - Input / Output Values (Desired): " + dataTest.getTestingDataSet().getRows());
-            //System.out.println("\nTesting - Input / Output Values (Desired): " + dS.getRows());
-
-            //Test Loaded Neural Network
-            //System.out.println("\nTesting Loaded Neural Network");
-            //testNeuralNetwork(loadMLP,dataTest.getTestingDataSet());
-            //testNeuralNetwork(loadMLP,dS);
-
-            //currentDateAndTime();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    */
     
     public void currentDateAndTime()
     {
@@ -825,6 +729,20 @@ public class ANNDataSetSetup
                 new double[]{1,	0, 0, 0});
     }
     
+/******************************************************************
+*Title: Neuroph Framework, MultiLayerPerceptron, testANN 
+*Site Owner / Sponsor: Neuroph
+*Date: 2016
+*Author: Neuroph
+*Availability: http://neuroph.sourceforge.net/download.html
+*Availability: http://neuroph.sourceforge.net/javadoc/index.html
+*Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
+*Date Accessed: February 2016
+*Modified: User created TestNeuralNetwork class using the Neuroph frame for testANN method. Code has been 
+* modified through the use of variable names. For loop within testANN method alter to an Iterator.
+* MeanSquaredError class added to testANN method from the Neuroph framework API
+******************************************************************/
     public void testANN(NeuralNetwork aNN, DataSet dataSet)
     {
         Iterator<DataSetRow> it = dataSet.getRows().iterator();

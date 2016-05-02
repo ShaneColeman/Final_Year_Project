@@ -4,17 +4,23 @@
  * and open the template in the editor.
  */
 
-/*
-http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
-*/
+/******************************************************************
+*Title: Neuroph Framework, NeuralNetork, MultiLayerPerceptron
+*Site Owner / Sponsor: Neuroph
+*Date: 2016
+*Author: Neuroph
+*Availability: http://neuroph.sourceforge.net/download.html
+*Availability: http://neuroph.sourceforge.net/javadoc/index.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
+*Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+*Date Accessed: January, February 2016
+*Modified: User created NeuralNetworkANN class using the Neuroph frame for multiLayerPerceptron, saveNeuralNetwork,
+* learnDataSet, learnDataSetWithBackP and learnDataSetWithMBackP concrete methods
+******************************************************************/
 
 package musicgenreneuralnetwork;
 
-import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.nnet.MultiLayerPerceptron;
 import org.neuroph.nnet.learning.BackPropagation;
@@ -62,15 +68,7 @@ public class MultiLayerPerceptronANN extends NeuralNetworkANN
     {
        multiLayer.learn(dataSet, learningRule); 
     }
-    
-    /*
-    //Remove if unsuccessful
-    public void learnDataSet(BufferedDataSet dataSet, MomentumBackpropagation learningRule)
-    {
-       multiLayer.learn(dataSet, learningRule); 
-    }
-    */
-    
+
     public MultiLayerPerceptron getMultiLayerPerceptron()
     {
         return multiLayer;

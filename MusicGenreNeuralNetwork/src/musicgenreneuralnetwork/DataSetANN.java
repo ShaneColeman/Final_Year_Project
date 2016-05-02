@@ -4,15 +4,22 @@
  * and open the template in the editor.
  */
 
-/*
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
-*/
+/******************************************************************
+*Title: Neuroph Framework, DataSet, DataSetRow
+*Site Owner / Sponsor: Neuroph
+*Date: 2016
+*Author: Neuroph
+*Availability: http://neuroph.sourceforge.net/download.html
+*Availability: http://neuroph.sourceforge.net/javadoc/index.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
+*Date Accessed: February 2016
+*Modified: User created DataSetANN class using the Neuroph frame for addTrainingDataSetRow, 
+* addTestingDataSetRow and addDataSetRow methods
+******************************************************************/
 
 package musicgenreneuralnetwork;
 
-import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 
 /**
@@ -23,17 +30,11 @@ public abstract class DataSetANN
 {
     private int inputs;
     private int outputs;
-    //private DataSet dataSet;
     
     public DataSetANN(int inputs, int outputs)
     {
         this.inputs = inputs;
         this.outputs = outputs;
-
-        //setNumberOfInputs(inputs);
-        //setNumberOfOutputs(outputs);
-        
-        //dataSet = new DataSet(getNumberOfInputs(), getNumberOfOutputs());
     }
     
     public void setNumberOfInputs(int inputs){this.inputs = inputs;}
@@ -48,8 +49,5 @@ public abstract class DataSetANN
     
     public void addTestingDataSetRow(double[] inputs, double[] outputs){};
     
-    public void addDataSetRow(DataSetRow dataSetRow){};
-    
-    //public DataSet getDataSet(){return dataSet;}
-     
+    public void addDataSetRow(DataSetRow dataSetRow){};     
 }

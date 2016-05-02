@@ -4,19 +4,23 @@
  * and open the template in the editor.
  */
 
-/*
-http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
-
-http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
-*/
+/******************************************************************
+*Title: Neuroph Framework, DataSet, DataSetRow
+*Site Owner / Sponsor: Neuroph
+*Date: 2016
+*Author: Neuroph
+*Availability: http://neuroph.sourceforge.net/download.html
+*Availability: http://neuroph.sourceforge.net/javadoc/index.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
+*Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
+*Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
+*Date Accessed: February 2016
+*Modified: User created DataSetTest class using the Neuroph frame for addTestingDataSetRow, addDataSetRow,
+* testingSetFromFile and getTestingColumnNames methods
+******************************************************************/
 
 package musicgenreneuralnetwork;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import org.neuroph.core.data.BufferedDataSet;
 import org.neuroph.core.data.DataSet;
 import org.neuroph.core.data.DataSetRow;
 
@@ -27,8 +31,6 @@ import org.neuroph.core.data.DataSetRow;
 public class DataSetTest extends DataSetANN
 {
     private DataSet test;
-    //private int inputs;
-    //private int outputs;
     
     public DataSetTest(int inputs, int outputs)
     {
@@ -54,21 +56,6 @@ public class DataSetTest extends DataSetANN
         return DataSet.createFromFile(fileName, inputs, outputs, delimiter);
     }
     
-    /*
-    public void getTestingBDS(String fileName, int inputs, int outputs, String delimiter) throws FileNotFoundException
-    {
-        File file = new File(fileName);
-            
-        BufferedDataSet bDS = new BufferedDataSet(file,inputs,outputs,delimiter);
-
-        for (DataSetRow dataRow : bDS.getRows()) 
-        {
-            test.addRow(dataRow);
-            //bDS.addRow(dataRow);
-        }
-    }
-    */
-    
     public String[] getTestingColumnNames()
     {
         return test.getColumnNames();
@@ -78,31 +65,4 @@ public class DataSetTest extends DataSetANN
     {
         return test;
     }
-    
-    //Unused Code
-    /*
-    @Override
-    public void setNumberOfInputs(int inputs)
-    {
-        this.inputs = inputs;
-    }
-    
-    @Override
-    public void setNumberOfOutputs(int outputs)
-    {
-        this.outputs = outputs;
-    }
-    
-    @Override
-    public int getNumberOfInputs()
-    {
-        return inputs;
-    }
-    
-    @Override
-    public int getNumberOfOutputs()
-    {
-        return outputs;
-    }
-    */
 }
