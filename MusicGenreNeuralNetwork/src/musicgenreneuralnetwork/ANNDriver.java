@@ -24,8 +24,8 @@ public class ANNDriver {
         //aNN.trainedMLPDSTrainFile();
         //aNN.savedMLPDSTestFile();
         
-        aNN.trainedMLPBDSTrainFile();
-        //aNN.savedMLPBDSTestFile();
+        //aNN.trainedMLPBDSTrainFile();
+        aNN.savedMLPBDSTestFile();
         
         //aNN.trainedMLPBDSTrainFile4Inputs();
         //aNN.savedMLPBDSTestFile4Inputs();
