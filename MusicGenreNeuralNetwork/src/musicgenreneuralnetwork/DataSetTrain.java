@@ -5,17 +5,18 @@
  */
 
 /******************************************************************
-*Title: Neuroph Framework, DataSet, DataSetRow
-*Site Owner / Sponsor: Neuroph
+*Title: DataSetTrain.java Concrete Class (User Created: Shane Coleman) utilising Neuroph Framework (DataSet, DataSetRow)
+*Site Owner / Sponsor: DataSetTrain.java Concrete Class (User Created: Shane Coleman) utilising Neuroph Framework (Neuroph)
 *Date: 2016
-*Author: Neuroph
+*Author: Shane Coleman: DataSetTest.java Concrete Class
+*Author: Neuroph Framework: Neuroph
 *Availability: http://neuroph.sourceforge.net/download.html
 *Availability: http://neuroph.sourceforge.net/javadoc/index.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Date Accessed: February 2016
-*Modified: User created DataSetTrain class using the Neuroph frame for addTrainingDataSetRow, addDataSetRow,
+*Modified: User created DataSetTrain concrete class using the Neuroph frame for addTrainingDataSetRow, addDataSetRow,
 * trainingSetFromFile and getTrainingColumnNames methods
 ******************************************************************/
 

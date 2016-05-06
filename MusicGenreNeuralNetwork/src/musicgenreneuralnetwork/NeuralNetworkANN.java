@@ -5,17 +5,18 @@
  */
 
 /******************************************************************
-*Title: Neuroph Framework, NeuralNetork, MultiLayerPerceptron
-*Site Owner / Sponsor: Neuroph
+*Title: NeuralNetwork.java Abstract Class (User Created: Shane Coleman) utilising Neuroph Framework (NeuralNetork, MultiLayerPerceptron)
+*Site Owner / Sponsor: NeuralNetwork.java Abstract Class (User Created: Shane Coleman) utilising Neuroph Framework (Neuroph)
 *Date: 2016
-*Author: Neuroph
+*Author: Shane Coleman: NeuralNetwork.java Abstract Class
+*Author: Neuroph Framework: Neuroph
 *Availability: http://neuroph.sourceforge.net/download.html
 *Availability: http://neuroph.sourceforge.net/javadoc/index.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/NeuralNetwork.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Date Accessed: January, February 2016
-*Modified: User created NeuralNetworkANN class using the Neuroph frame for multiLayerPerceptron, saveNeuralNetwork,
+*Modified: User created NeuralNetworkANN abstract class using the Neuroph frame for multiLayerPerceptron, saveNeuralNetwork,
 * learnDataSet, learnDataSetWithBackP and learnDataSetWithMBackP abstract methods
 ******************************************************************/
 

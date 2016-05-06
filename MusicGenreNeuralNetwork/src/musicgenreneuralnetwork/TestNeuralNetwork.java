@@ -5,18 +5,19 @@
  */
 
 /******************************************************************
-*Title: Neuroph Framework, MultiLayerPerceptron, testANN 
-*Site Owner / Sponsor: Neuroph
+*Title: TestNeuralNetwork.java Concrete Class (User Created: Shane Coleman) utilising Neuroph Framework (MultiLayerPerceptron, testNeuralNetwork method) 
+*Site Owner / Sponsor: TestNeuralNetwork.java Concrete Class (User Created: Shane Coleman) utilising Neuroph Framework (Neuroph)
 *Date: 2016
-*Author: Neuroph
+*Author: Shane Coleman: TestNeuralNetwork.java Concrete Class
+*Author: Neuroph Framework: Neuroph (testNeuralNetwork method, modified to testANN method)
 *Availability: http://neuroph.sourceforge.net/download.html
 *Availability: http://neuroph.sourceforge.net/javadoc/index.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
 *Date Accessed: February 2016
-*Modified: User created TestNeuralNetwork class using the Neuroph framework for testANN method. Code has been 
+*Modified: User created TestNeuralNetwork concrete class using the Neuroph framework for testNeuralNetwork method (originally named), modified to testANN method. Code has been 
 * modified through the use of variable names. For loop within testANN method alter to an Iterator.
-* MeanSquaredError class added to testANN method from the Neuroph framework API
+* MeanSquaredError class added to testANN method from the Neuroph framework API.
 ******************************************************************/
 
 package musicgenreneuralnetwork;

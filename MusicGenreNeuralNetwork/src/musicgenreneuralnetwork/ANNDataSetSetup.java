@@ -5,10 +5,11 @@
  */
 
 /******************************************************************
-*Title: Neuroph Framework, NeuralNetork, MultiLayerPerceptron
-*Site Owner / Sponsor: Neuroph
+*Title: ANNDataSetSetup.java Concrete Class (User Created: Shane Coleman) utilising Neuroph Framework
+*Site Owner / Sponsor: ANNDataSetSetup.java Concrete Class (User Created: Shane Coleman) utilising Neuroph Framework (Neuroph)
 *Date: 2016
-*Author: Neuroph
+*Author: Shane Coleman: ANNDataSetSetup.java Concrete Class
+*Author: Neuroph Framework: Neuroph
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MusicClassification/music_classification_by_genre_using_neural_networks.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MusicClassification/neuro_files/MusicClassificationFullDataset.txt
@@ -23,7 +24,7 @@
 *Availability: http://stackoverflow.com/questions/29998335/neuroph-multi-layer-perceptron-backpropagation-learning-not-working
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
 *Date Accessed: January to April 2016
-*Modified: User created ANNDataSetSetup class using the Neuroph framework. Methods 1A to 4B are user created using 
+*Modified: User created ANNDataSetSetup.java concrete class using the Neuroph Framework. Methods 1A to 4B are user created using 
 * the user created classes which use the Neuroph framework API. dataSetTrainingCreation and dataSetTesting are
 * user created methods but are modified from the original code, located at this URL:
 * http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
@@ -730,7 +731,7 @@ public class ANNDataSetSetup
     }
     
 /******************************************************************
-*Title: Neuroph Framework, MultiLayerPerceptron, testANN 
+*Title: Neuroph Framework, MultiLayerPerceptron, testNeuralNetwork 
 *Site Owner / Sponsor: Neuroph
 *Date: 2016
 *Author: Neuroph
@@ -739,7 +740,7 @@ public class ANNDataSetSetup
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
 *Date Accessed: February 2016
-*Modified: User created TestNeuralNetwork class using the Neuroph frame for testANN method. Code has been 
+*Modified: User created ANNDataSetSetup.java concrete class using the Neuroph framework for testNeuralNetwork method (originally named), modified to testANN method. Code has been 
 * modified through the use of variable names. For loop within testANN method alter to an Iterator.
 * MeanSquaredError class added to testANN method from the Neuroph framework API
 ******************************************************************/
