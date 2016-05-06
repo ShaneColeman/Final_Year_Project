@@ -16,7 +16,7 @@
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/nnet/MultiLayerPerceptron.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Date Accessed: January, February 2016
-*Modified: User created NeuralNetworkANN abstract class using the Neuroph frame for multiLayerPerceptron, saveNeuralNetwork,
+*Modified: User created NeuralNetworkANN abstract class using the Neuroph Framework API for user created methods for multiLayerPerceptron, saveNeuralNetwork,
 * learnDataSet, learnDataSetWithBackP and learnDataSetWithMBackP abstract methods
 ******************************************************************/
 

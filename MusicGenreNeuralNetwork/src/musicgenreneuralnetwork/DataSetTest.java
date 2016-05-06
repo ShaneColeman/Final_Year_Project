@@ -16,7 +16,7 @@
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Date Accessed: February 2016
-*Modified: User created DataSetTest concrete class using the Neuroph frame for addTestingDataSetRow, addDataSetRow,
+*Modified: User created DataSetTest concrete class using the Neuroph Framework API for user created methods for addTestingDataSetRow, addDataSetRow,
 * testingSetFromFile and getTestingColumnNames methods
 ******************************************************************/
 

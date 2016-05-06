@@ -15,7 +15,7 @@
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSet.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/data/DataSetRow.html
 *Date Accessed: February 2016
-*Modified: User created DataSetANN abstract class using the Neuroph frame for addTrainingDataSetRow, 
+*Modified: User created DataSetANN abstract class using the Neuroph Framework API for user created methods addTrainingDataSetRow, 
 * addTestingDataSetRow and addDataSetRow methods
 ******************************************************************/
 

@@ -31,8 +31,8 @@
 * testANN method has already been supplied code reference
 * Backpropagation and MomentumBackpropagation acquired from Neuroph framework API
 * BufferedDataSet acquired from Neuroph framework API
-* setColumnNames are user created methods, uses the setColumnNames method from Neuroph framework API
-* File and Iterators are user created, uses the DataSet and DataSetRow classes from the Neuroph framework API
+* setColumnNames are user created methods, uses the setColumnNames method from Neuroph Framework API
+* File and Iterators are user created, uses the DataSet and DataSetRow classes from the Neuroph Framework API
 ******************************************************************/
 
 package musicgenreneuralnetwork;
@@ -740,9 +740,9 @@ public class ANNDataSetSetup
 *Availability: http://neuroph.sourceforge.net/tutorials/MultiLayerPerceptron.html
 *Availability: http://neuroph.sourceforge.net/javadoc/org/neuroph/core/learning/error/MeanSquaredError.html
 *Date Accessed: February 2016
-*Modified: User created ANNDataSetSetup.java concrete class using the Neuroph framework for testNeuralNetwork method (originally named), modified to testANN method. Code has been 
+*Modified: User created ANNDataSetSetup.java concrete class and using the Neuroph framework for testNeuralNetwork method (originally named), modified to testANN method. Code has been 
 * modified through the use of variable names. For loop within testANN method alter to an Iterator.
-* MeanSquaredError class added to testANN method from the Neuroph framework API
+* MeanSquaredError class added to testANN method from the Neuroph Framework API
 ******************************************************************/
     public void testANN(NeuralNetwork aNN, DataSet dataSet)
     {
